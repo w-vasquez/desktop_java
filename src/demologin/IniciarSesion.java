@@ -5,11 +5,14 @@
  */
 package demologin;
 
+import Datos.Usuarios;
 import EncargadoInicio.EncargadoLaboratorio;
+import com.google.gson.Gson;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import tablas.Usuario;
 
 /**
  *
@@ -44,7 +47,7 @@ public class IniciarSesion extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Usuario:");
+        jLabel1.setText("Correo:");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Clave:");
@@ -114,28 +117,58 @@ public class IniciarSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // Iniciar Sesion
-        String user  = btnUser.getText();
-        String pass = btnpass.getText();
         
+        //Instanciar clase de la tabla
+        Usuario objUsuario = new Usuario();
+        
+        //instansiar la clase Gson que convierte el Json a array en java
+        Gson gson = new Gson();
+        
+        // Iniciar Sesion
+        String user  = btnUser.getText().trim();
+        String pass = btnpass.getText().trim();
+        
+        //envio datos al metodo 
+        String url = "https://limpieza.azurewebsites.net/WS/API/usuario/mostrarP.php?";
+        String parametros = "correo="+user+"&clave="+pass;
+        
+        //Ejecuto consulta con los parametros de link
+        String elJson = "["+ objUsuario.consultaCrediencial(url+parametros)+"]";
+        
+        //convertir a objeto de java
+        Usuario[] elUsuario = gson.fromJson(elJson, Usuario[].class);
+        
+        //asignar valores a la variables de comparacion
+        String correo = elUsuario[0].getCorreo();
+        String clave = elUsuario[0].getPassword();
+        int nivel = Integer.parseInt(elUsuario[0].getIdTipoUsuario());
+        System.out.println(correo+" "+clave);
+        System.out.println(user+" "+pass);
+        //evaluar el destino
         if(user.isEmpty() || pass.isEmpty()){
             JOptionPane.showMessageDialog(null, "Llene todos los campos por favor");
-        
-        }
-        else if(user.equals("Usuario1") && pass.equals("123")){
-            JOptionPane.showMessageDialog(null, "Bienvenido al Sistema");
+        }else if(user.equals(correo) && pass.equals(clave) && (nivel == 1)){
+            JOptionPane.showMessageDialog(null, "Bienvenido al Sistema Administrador");
             InicioAdmin pc = new InicioAdmin();
             pc.setVisible(true);
             this.dispose();
             pc.setVisible(rootPaneCheckingEnabled);
-        }
-        else if(user.equals("Usuario2") && pass.equals("1234")){
-            JOptionPane.showMessageDialog(null, "Bienvenido al Sistema");
+        }else if(user.equals(correo) && pass.equals(clave) && (nivel == 2)){
+            JOptionPane.showMessageDialog(null, "Bienvenido al Sistema Encargado");
             EncargadoLaboratorio el = new EncargadoLaboratorio();
             el.setVisible(true);
             this.dispose();
             el.setVisible(rootPaneCheckingEnabled);
+        }else if(user.equals(correo) && pass.equals(clave) && (nivel == 3)){
+            JOptionPane.showMessageDialog(null, "Bienvenido al Sistema Ordenanza");
+            EncargadoLaboratorio el = new EncargadoLaboratorio();
+            el.setVisible(true);
+            this.dispose();
+            el.setVisible(rootPaneCheckingEnabled);
+        }else{
+            JOptionPane.showMessageDialog(null, "Revisar nombre de usuario o contraseña");
         }
+        
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
