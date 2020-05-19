@@ -9,12 +9,12 @@ package AdministradorGeneral;
  *
  * @author CRUZ_2019
  */
-public class frmMenu extends javax.swing.JFrame {
+public class frmMenuAdministrador extends javax.swing.JFrame {
 
     /**
      * Creates new form Menu
      */
-    public frmMenu() {
+    public frmMenuAdministrador() {
         initComponents();
         this.setLocationRelativeTo(this);
     }
@@ -30,28 +30,28 @@ public class frmMenu extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        btnmenu = new AdministradorGeneral.RSButtonMetro();
+        btnmenu = new rsbuttom.RSButtonMetro();
         jLabel4 = new javax.swing.JLabel();
         pnldespegable = new javax.swing.JPanel();
         escritorio = new javax.swing.JDesktopPane();
-        rSButtonMetro7 = new AdministradorGeneral.RSButtonMetro();
-        rSButtonMetro5 = new AdministradorGeneral.RSButtonMetro();
-        rSButtonMetro9 = new AdministradorGeneral.RSButtonMetro();
+        rSButtonMetro7 = new rsbuttom.RSButtonMetro();
+        rSButtonMetro5 = new rsbuttom.RSButtonMetro();
+        rSButtonMetro9 = new rsbuttom.RSButtonMetro();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        rSButtonMetro4 = new AdministradorGeneral.RSButtonMetro();
-        rSButtonMetro6 = new AdministradorGeneral.RSButtonMetro();
-        rSButtonMetro8 = new AdministradorGeneral.RSButtonMetro();
+        rSButtonMetro4 = new rsbuttom.RSButtonMetro();
+        rSButtonMetro6 = new rsbuttom.RSButtonMetro();
+        rSButtonMetro8 = new rsbuttom.RSButtonMetro();
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        btnnuevo = new AdministradorGeneral.RSButtonMetro();
-        btnmodificar = new AdministradorGeneral.RSButtonMetro();
-        rSButtonMetro10 = new AdministradorGeneral.RSButtonMetro();
-        btnasignarOrd = new AdministradorGeneral.RSButtonMetro();
+        btnnuevo = new rsbuttom.RSButtonMetro();
+        btnmodificar = new rsbuttom.RSButtonMetro();
+        rSButtonMetro10 = new rsbuttom.RSButtonMetro();
+        btnasignarOrd = new rsbuttom.RSButtonMetro();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,7 +61,7 @@ public class frmMenu extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(153, 0, 51));
 
         btnmenu.setBackground(new java.awt.Color(153, 0, 51));
-        btnmenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Menu/home.png"))); // NOI18N
+        btnmenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AdministradorGeneral/home.png"))); // NOI18N
         btnmenu.setColorHover(new java.awt.Color(153, 0, 51));
         btnmenu.setColorNormal(new java.awt.Color(153, 0, 51));
         btnmenu.setColorPressed(new java.awt.Color(153, 0, 51));
@@ -76,7 +76,7 @@ public class frmMenu extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Menu/utec.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AdministradorGeneral/utec.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -375,14 +375,18 @@ public class frmMenu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmMenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmMenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmMenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmMenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -391,16 +395,16 @@ public class frmMenu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmMenu().setVisible(true);
+                new frmMenuAdministrador().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private AdministradorGeneral.RSButtonMetro btnasignarOrd;
-    private AdministradorGeneral.RSButtonMetro btnmenu;
-    private AdministradorGeneral.RSButtonMetro btnmodificar;
-    private AdministradorGeneral.RSButtonMetro btnnuevo;
+    private rsbuttom.RSButtonMetro btnasignarOrd;
+    private rsbuttom.RSButtonMetro btnmenu;
+    private rsbuttom.RSButtonMetro btnmodificar;
+    private rsbuttom.RSButtonMetro btnnuevo;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -414,12 +418,12 @@ public class frmMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel pnldespegable;
-    private AdministradorGeneral.RSButtonMetro rSButtonMetro10;
-    private AdministradorGeneral.RSButtonMetro rSButtonMetro4;
-    private AdministradorGeneral.RSButtonMetro rSButtonMetro5;
-    private AdministradorGeneral.RSButtonMetro rSButtonMetro6;
-    private AdministradorGeneral.RSButtonMetro rSButtonMetro7;
-    private AdministradorGeneral.RSButtonMetro rSButtonMetro8;
-    private AdministradorGeneral.RSButtonMetro rSButtonMetro9;
+    private rsbuttom.RSButtonMetro rSButtonMetro10;
+    private rsbuttom.RSButtonMetro rSButtonMetro4;
+    private rsbuttom.RSButtonMetro rSButtonMetro5;
+    private rsbuttom.RSButtonMetro rSButtonMetro6;
+    private rsbuttom.RSButtonMetro rSButtonMetro7;
+    private rsbuttom.RSButtonMetro rSButtonMetro8;
+    private rsbuttom.RSButtonMetro rSButtonMetro9;
     // End of variables declaration//GEN-END:variables
 }

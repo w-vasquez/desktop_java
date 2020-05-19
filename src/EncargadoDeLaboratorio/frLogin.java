@@ -6,6 +6,8 @@
 package EncargadoDeLaboratorio;
 
 
+import AdministradorGeneral.frmMenuAdministrador;
+import Ordenanzas.frmMenuOrdenanzas;
 import com.google.gson.Gson;
 
 import javax.swing.JOptionPane;
@@ -229,22 +231,20 @@ public class frLogin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Llene todos los campos por favor");
         }else if(user.equals(correo) && pass.equals(clave) && (nivel == 1)){
             JOptionPane.showMessageDialog(null, "Bienvenido al Sistema Administrador");
-            frmMenu pc = new frmMenu();
+            frmMenuAdministrador pc = new frmMenuAdministrador();
             pc.setVisible(true);
-            //this.dispose();
+            this.dispose();
             //pc.setVisible(rootPaneCheckingEnabled);
         }else if(user.equals(correo) && pass.equals(clave) && (nivel == 2)){
             JOptionPane.showMessageDialog(null, "Bienvenido al Sistema Encargado");
-            /*EncargadoLaboratorio el = new EncargadoLaboratorio();
-            el.setVisible(true);
+            frmMenuEncargado pc = new frmMenuEncargado();
+            pc.setVisible(true);
             this.dispose();
-            el.setVisible(rootPaneCheckingEnabled);*/
         }else if(user.equals(correo) && pass.equals(clave) && (nivel == 3)){
-            /*JOptionPane.showMessageDialog(null, "Bienvenido al Sistema Ordenanza");
-            EncargadoLaboratorio el = new EncargadoLaboratorio();
-            el.setVisible(true);
+            JOptionPane.showMessageDialog(null, "Bienvenido al Sistema Ordenanza");
+            frmMenuOrdenanzas pc = new frmMenuOrdenanzas();
+            pc.setVisible(true);
             this.dispose();
-            el.setVisible(rootPaneCheckingEnabled);*/
         }else{
             JOptionPane.showMessageDialog(null, "Revisar nombre de usuario o contraseña");
         }
