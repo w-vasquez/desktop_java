@@ -190,9 +190,9 @@ public class NuevoLab extends javax.swing.JInternalFrame{
                     .addComponent(txtEdificio, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtResponsable, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtResponsable, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -254,13 +254,14 @@ public class NuevoLab extends javax.swing.JInternalFrame{
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblregistros)
-                .addContainerGap(546, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblregistros))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -319,11 +320,6 @@ public class NuevoLab extends javax.swing.JInternalFrame{
         txtTelefono.transferFocus();
     }//GEN-LAST:event_txtTelefonoActionPerformed
 
-    private void txtEdificioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdificioActionPerformed
-        // TODO add your handling code here:
-        txtEdificio.transferFocus();
-    }//GEN-LAST:event_txtEdificioActionPerformed
-
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
         // TODO add your handling code here:
        Laboratorios objLaboratorios=new Laboratorios();
@@ -379,11 +375,6 @@ public class NuevoLab extends javax.swing.JInternalFrame{
         this.dispose();
     }//GEN-LAST:event_btncancelarActionPerformed
 
-    private void txtResponsableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtResponsableActionPerformed
-        // TODO add your handling code here:
-        txtResponsable.transferFocus();
-    }//GEN-LAST:event_txtResponsableActionPerformed
-
     private void txtCapacidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCapacidadActionPerformed
         // TODO add your handling code here:
         txtCapacidad.transferFocus();
@@ -393,6 +384,16 @@ public class NuevoLab extends javax.swing.JInternalFrame{
         // TODO add your handling code here:
 
     }//GEN-LAST:event_listLaboratoriosMouseClicked
+
+    private void txtEdificioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdificioActionPerformed
+        // TODO add your handling code here:
+        txtEdificio.transferFocus();
+    }//GEN-LAST:event_txtEdificioActionPerformed
+
+    private void txtResponsableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtResponsableActionPerformed
+        // TODO add your handling code here:
+        txtResponsable.transferFocus();
+    }//GEN-LAST:event_txtResponsableActionPerformed
 
     /**
      * @param args the command line arguments

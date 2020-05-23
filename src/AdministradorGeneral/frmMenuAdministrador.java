@@ -38,7 +38,7 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
         escritorio = new javax.swing.JDesktopPane();
         btnNuevoEdificio = new rsbuttom.RSButtonMetro();
         btnModificarLab = new rsbuttom.RSButtonMetro();
-        rSButtonMetro9 = new rsbuttom.RSButtonMetro();
+        btnHistorial = new rsbuttom.RSButtonMetro();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnNuevoLab = new rsbuttom.RSButtonMetro();
@@ -136,11 +136,16 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
         });
         jPanel1.add(btnModificarLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 240, 50));
 
-        rSButtonMetro9.setBackground(new java.awt.Color(38, 38, 38));
-        rSButtonMetro9.setText("HISTORIAL");
-        rSButtonMetro9.setColorHover(new java.awt.Color(1, 165, 165));
-        rSButtonMetro9.setColorNormal(new java.awt.Color(38, 38, 38));
-        jPanel1.add(rSButtonMetro9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 580, 240, 50));
+        btnHistorial.setBackground(new java.awt.Color(38, 38, 38));
+        btnHistorial.setText("HISTORIAL");
+        btnHistorial.setColorHover(new java.awt.Color(1, 165, 165));
+        btnHistorial.setColorNormal(new java.awt.Color(38, 38, 38));
+        btnHistorial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHistorialActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 580, 240, 50));
 
         jPanel4.setBackground(new java.awt.Color(106, 106, 106));
 
@@ -419,6 +424,14 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
         form.setVisible(true);
     }//GEN-LAST:event_btnModificarEdificioActionPerformed
 
+    private void btnHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistorialActionPerformed
+        // TODO add your handling code here:
+        frmProgramaciones form=new frmProgramaciones();
+        escritorio.add(form);
+        form.toFront();
+        form.setVisible(true);
+    }//GEN-LAST:event_btnHistorialActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -463,6 +476,7 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private rsbuttom.RSButtonMetro btnCerrarSesion;
+    private rsbuttom.RSButtonMetro btnHistorial;
     private rsbuttom.RSButtonMetro btnModificarEdificio;
     private rsbuttom.RSButtonMetro btnModificarLab;
     private rsbuttom.RSButtonMetro btnNuevoEdificio;
@@ -484,6 +498,5 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel pnldespegable;
-    private rsbuttom.RSButtonMetro rSButtonMetro9;
     // End of variables declaration//GEN-END:variables
 }
