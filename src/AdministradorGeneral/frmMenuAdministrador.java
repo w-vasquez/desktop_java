@@ -5,6 +5,8 @@
  */
 package AdministradorGeneral;
 
+import EncargadoDeLaboratorio.frLogin;
+
 /**
  *
  * @author CRUZ_2019
@@ -34,14 +36,13 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         pnldespegable = new javax.swing.JPanel();
         escritorio = new javax.swing.JDesktopPane();
-        rSButtonMetro7 = new rsbuttom.RSButtonMetro();
-        rSButtonMetro5 = new rsbuttom.RSButtonMetro();
+        btnNuevoEdificio = new rsbuttom.RSButtonMetro();
+        btnModificarLab = new rsbuttom.RSButtonMetro();
         rSButtonMetro9 = new rsbuttom.RSButtonMetro();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        rSButtonMetro4 = new rsbuttom.RSButtonMetro();
-        rSButtonMetro6 = new rsbuttom.RSButtonMetro();
-        rSButtonMetro8 = new rsbuttom.RSButtonMetro();
+        btnNuevoLab = new rsbuttom.RSButtonMetro();
+        btnModificarEdificio = new rsbuttom.RSButtonMetro();
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
@@ -50,7 +51,7 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         btnnuevo = new rsbuttom.RSButtonMetro();
         btnmodificar = new rsbuttom.RSButtonMetro();
-        rSButtonMetro10 = new rsbuttom.RSButtonMetro();
+        btnCerrarSesion = new rsbuttom.RSButtonMetro();
         btnasignarOrd = new rsbuttom.RSButtonMetro();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -113,23 +114,33 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
 
         jPanel1.add(escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, 1410, 660));
 
-        rSButtonMetro7.setBackground(new java.awt.Color(38, 38, 38));
-        rSButtonMetro7.setText("NUEVO");
-        rSButtonMetro7.setColorHover(new java.awt.Color(175, 29, 0));
-        rSButtonMetro7.setColorNormal(new java.awt.Color(38, 38, 38));
-        jPanel1.add(rSButtonMetro7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 250, 50));
+        btnNuevoEdificio.setBackground(new java.awt.Color(38, 38, 38));
+        btnNuevoEdificio.setText("NUEVO");
+        btnNuevoEdificio.setColorHover(new java.awt.Color(175, 29, 0));
+        btnNuevoEdificio.setColorNormal(new java.awt.Color(38, 38, 38));
+        btnNuevoEdificio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoEdificioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnNuevoEdificio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 240, 50));
 
-        rSButtonMetro5.setBackground(new java.awt.Color(38, 38, 38));
-        rSButtonMetro5.setText("MODIFICAR");
-        rSButtonMetro5.setColorHover(new java.awt.Color(24, 152, 0));
-        rSButtonMetro5.setColorNormal(new java.awt.Color(38, 38, 38));
-        jPanel1.add(rSButtonMetro5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 250, 50));
+        btnModificarLab.setBackground(new java.awt.Color(38, 38, 38));
+        btnModificarLab.setText("MODIFICAR");
+        btnModificarLab.setColorHover(new java.awt.Color(24, 152, 0));
+        btnModificarLab.setColorNormal(new java.awt.Color(38, 38, 38));
+        btnModificarLab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarLabActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnModificarLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 240, 50));
 
         rSButtonMetro9.setBackground(new java.awt.Color(38, 38, 38));
         rSButtonMetro9.setText("HISTORIAL");
         rSButtonMetro9.setColorHover(new java.awt.Color(1, 165, 165));
         rSButtonMetro9.setColorNormal(new java.awt.Color(38, 38, 38));
-        jPanel1.add(rSButtonMetro9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 630, 250, 50));
+        jPanel1.add(rSButtonMetro9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 580, 240, 50));
 
         jPanel4.setBackground(new java.awt.Color(106, 106, 106));
 
@@ -156,23 +167,27 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, -1, 40));
 
-        rSButtonMetro4.setBackground(new java.awt.Color(38, 38, 38));
-        rSButtonMetro4.setText("NUEVO");
-        rSButtonMetro4.setColorHover(new java.awt.Color(215, 79, 42));
-        rSButtonMetro4.setColorNormal(new java.awt.Color(38, 38, 38));
-        jPanel1.add(rSButtonMetro4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 250, 50));
+        btnNuevoLab.setBackground(new java.awt.Color(38, 38, 38));
+        btnNuevoLab.setText("NUEVO");
+        btnNuevoLab.setColorHover(new java.awt.Color(215, 79, 42));
+        btnNuevoLab.setColorNormal(new java.awt.Color(38, 38, 38));
+        btnNuevoLab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoLabActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnNuevoLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 240, 50));
 
-        rSButtonMetro6.setBackground(new java.awt.Color(38, 38, 38));
-        rSButtonMetro6.setText("GESTIONAR LABORATORIOS");
-        rSButtonMetro6.setColorHover(new java.awt.Color(0, 106, 193));
-        rSButtonMetro6.setColorNormal(new java.awt.Color(38, 38, 38));
-        jPanel1.add(rSButtonMetro6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 250, 50));
-
-        rSButtonMetro8.setBackground(new java.awt.Color(38, 38, 38));
-        rSButtonMetro8.setText("MODIFICAR");
-        rSButtonMetro8.setColorHover(new java.awt.Color(93, 10, 40));
-        rSButtonMetro8.setColorNormal(new java.awt.Color(38, 38, 38));
-        jPanel1.add(rSButtonMetro8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, 250, 50));
+        btnModificarEdificio.setBackground(new java.awt.Color(38, 38, 38));
+        btnModificarEdificio.setText("MODIFICAR");
+        btnModificarEdificio.setColorHover(new java.awt.Color(93, 10, 40));
+        btnModificarEdificio.setColorNormal(new java.awt.Color(38, 38, 38));
+        btnModificarEdificio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarEdificioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnModificarEdificio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 240, 50));
 
         jPanel5.setBackground(new java.awt.Color(106, 106, 106));
 
@@ -212,7 +227,7 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addComponent(jLabel3)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,7 +237,7 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, -1, 40));
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, -1, 40));
 
         jPanel7.setBackground(new java.awt.Color(106, 106, 106));
 
@@ -247,7 +262,7 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 590, -1, 40));
+        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, -1, 40));
 
         btnnuevo.setBackground(new java.awt.Color(38, 38, 38));
         btnnuevo.setText("NUEVO");
@@ -263,7 +278,7 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
                 btnnuevoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnnuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 250, 50));
+        jPanel1.add(btnnuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 240, 50));
 
         btnmodificar.setBackground(new java.awt.Color(38, 38, 38));
         btnmodificar.setText("MODIFICAR");
@@ -274,13 +289,18 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
                 btnmodificarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnmodificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 250, 50));
+        jPanel1.add(btnmodificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 240, 50));
 
-        rSButtonMetro10.setBackground(new java.awt.Color(38, 38, 38));
-        rSButtonMetro10.setText("CERRAR SESIÓN");
-        rSButtonMetro10.setColorHover(new java.awt.Color(93, 142, 36));
-        rSButtonMetro10.setColorNormal(new java.awt.Color(38, 38, 38));
-        jPanel1.add(rSButtonMetro10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 680, 250, 50));
+        btnCerrarSesion.setBackground(new java.awt.Color(38, 38, 38));
+        btnCerrarSesion.setText("CERRAR SESIÓN");
+        btnCerrarSesion.setColorHover(new java.awt.Color(93, 142, 36));
+        btnCerrarSesion.setColorNormal(new java.awt.Color(38, 38, 38));
+        btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarSesionActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 630, 240, 70));
 
         btnasignarOrd.setBackground(new java.awt.Color(38, 38, 38));
         btnasignarOrd.setText("ASIGNAR ORDENANZAS");
@@ -291,7 +311,7 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
                 btnasignarOrdActionPerformed(evt);
             }
         });
-        jPanel1.add(btnasignarOrd, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 250, 50));
+        jPanel1.add(btnasignarOrd, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 240, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -358,6 +378,47 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
         form.setVisible(true);
     }//GEN-LAST:event_btnasignarOrdActionPerformed
 
+    private void btnNuevoLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoLabActionPerformed
+        // TODO add your handling code here:
+        NuevoLab form=new NuevoLab();
+        escritorio.add(form);
+        form.toFront();
+        form.setVisible(true);
+    }//GEN-LAST:event_btnNuevoLabActionPerformed
+
+    private void btnModificarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarLabActionPerformed
+        // TODO add your handling code here:
+        ModificarLab form=new ModificarLab();
+        escritorio.add(form);
+        form.toFront();
+        form.setVisible(true);
+    }//GEN-LAST:event_btnModificarLabActionPerformed
+
+    private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
+        // TODO add your handling code here:
+        frLogin form=new frLogin();
+        form.setVisible(true);
+        
+        
+        this.dispose();
+    }//GEN-LAST:event_btnCerrarSesionActionPerformed
+
+    private void btnNuevoEdificioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoEdificioActionPerformed
+        // TODO add your handling code here:
+        frmNuevo_Edificio form=new frmNuevo_Edificio();
+        escritorio.add(form);
+        form.toFront();
+        form.setVisible(true);
+    }//GEN-LAST:event_btnNuevoEdificioActionPerformed
+
+    private void btnModificarEdificioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarEdificioActionPerformed
+        // TODO add your handling code here:
+        frmModificar_Edificio form=new frmModificar_Edificio();
+        escritorio.add(form);
+        form.toFront();
+        form.setVisible(true);
+    }//GEN-LAST:event_btnModificarEdificioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -401,6 +462,11 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private rsbuttom.RSButtonMetro btnCerrarSesion;
+    private rsbuttom.RSButtonMetro btnModificarEdificio;
+    private rsbuttom.RSButtonMetro btnModificarLab;
+    private rsbuttom.RSButtonMetro btnNuevoEdificio;
+    private rsbuttom.RSButtonMetro btnNuevoLab;
     private rsbuttom.RSButtonMetro btnasignarOrd;
     private rsbuttom.RSButtonMetro btnmenu;
     private rsbuttom.RSButtonMetro btnmodificar;
@@ -418,12 +484,6 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel pnldespegable;
-    private rsbuttom.RSButtonMetro rSButtonMetro10;
-    private rsbuttom.RSButtonMetro rSButtonMetro4;
-    private rsbuttom.RSButtonMetro rSButtonMetro5;
-    private rsbuttom.RSButtonMetro rSButtonMetro6;
-    private rsbuttom.RSButtonMetro rSButtonMetro7;
-    private rsbuttom.RSButtonMetro rSButtonMetro8;
     private rsbuttom.RSButtonMetro rSButtonMetro9;
     // End of variables declaration//GEN-END:variables
 }
