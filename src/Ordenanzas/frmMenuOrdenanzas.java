@@ -5,6 +5,8 @@
  */
 package Ordenanzas;
 
+import EncargadoDeLaboratorio.frLogin;
+
 /**
  *
  * @author CRUZ_2019
@@ -33,9 +35,10 @@ public class frmMenuOrdenanzas extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        rSButtonMetro3 = new rsbuttom.RSButtonMetro();
-        rSButtonMetro4 = new rsbuttom.RSButtonMetro();
-        rSButtonMetro6 = new rsbuttom.RSButtonMetro();
+        btnprogramaciones = new rsbuttom.RSButtonMetro();
+        btnhistorial = new rsbuttom.RSButtonMetro();
+        btncerrrar = new rsbuttom.RSButtonMetro();
+        escritorio = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,99 +58,126 @@ public class frmMenuOrdenanzas extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1041, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1117, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addGap(24, 24, 24))
+                .addGap(68, 68, 68))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addGap(24, 24, 24)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel2)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1230, 100));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1350, 90));
 
         jPanel3.setBackground(new java.awt.Color(38, 38, 38));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        rSButtonMetro3.setBackground(new java.awt.Color(38, 38, 38));
-        rSButtonMetro3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Programaciones2.png"))); // NOI18N
-        rSButtonMetro3.setText("Programaciones");
-        rSButtonMetro3.setColorHover(new java.awt.Color(156, 127, 0));
-        rSButtonMetro3.setColorNormal(new java.awt.Color(38, 38, 38));
-        rSButtonMetro3.setColorPressed(new java.awt.Color(224, 182, 0));
-        rSButtonMetro3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        rSButtonMetro3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        rSButtonMetro3.setIconTextGap(10);
-        rSButtonMetro3.addActionListener(new java.awt.event.ActionListener() {
+        btnprogramaciones.setBackground(new java.awt.Color(38, 38, 38));
+        btnprogramaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Programaciones2.png"))); // NOI18N
+        btnprogramaciones.setText("Programaciones");
+        btnprogramaciones.setColorHover(new java.awt.Color(156, 127, 0));
+        btnprogramaciones.setColorNormal(new java.awt.Color(38, 38, 38));
+        btnprogramaciones.setColorPressed(new java.awt.Color(224, 182, 0));
+        btnprogramaciones.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnprogramaciones.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnprogramaciones.setIconTextGap(10);
+        btnprogramaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rSButtonMetro3ActionPerformed(evt);
+                btnprogramacionesActionPerformed(evt);
             }
         });
-        jPanel3.add(rSButtonMetro3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 140));
+        jPanel3.add(btnprogramaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 140));
 
-        rSButtonMetro4.setBackground(new java.awt.Color(38, 38, 38));
-        rSButtonMetro4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Historial.png"))); // NOI18N
-        rSButtonMetro4.setText("HISTORIAL");
-        rSButtonMetro4.setColorHover(new java.awt.Color(5, 134, 154));
-        rSButtonMetro4.setColorNormal(new java.awt.Color(38, 38, 38));
-        rSButtonMetro4.setColorPressed(new java.awt.Color(3, 94, 107));
-        rSButtonMetro4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        rSButtonMetro4.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        rSButtonMetro4.setIconTextGap(10);
-        rSButtonMetro4.addActionListener(new java.awt.event.ActionListener() {
+        btnhistorial.setBackground(new java.awt.Color(38, 38, 38));
+        btnhistorial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Historial.png"))); // NOI18N
+        btnhistorial.setText("HISTORIAL");
+        btnhistorial.setColorHover(new java.awt.Color(5, 134, 154));
+        btnhistorial.setColorNormal(new java.awt.Color(38, 38, 38));
+        btnhistorial.setColorPressed(new java.awt.Color(3, 94, 107));
+        btnhistorial.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnhistorial.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnhistorial.setIconTextGap(10);
+        btnhistorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rSButtonMetro4ActionPerformed(evt);
+                btnhistorialActionPerformed(evt);
             }
         });
-        jPanel3.add(rSButtonMetro4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 220, 138));
+        jPanel3.add(btnhistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 220, 138));
 
-        rSButtonMetro6.setBackground(new java.awt.Color(38, 38, 38));
-        rSButtonMetro6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar2.png"))); // NOI18N
-        rSButtonMetro6.setText("CERRAR SESIÓN");
-        rSButtonMetro6.setColorHover(new java.awt.Color(215, 79, 42));
-        rSButtonMetro6.setColorNormal(new java.awt.Color(38, 38, 38));
-        rSButtonMetro6.setColorPressed(new java.awt.Color(150, 55, 29));
-        rSButtonMetro6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        rSButtonMetro6.setIconTextGap(10);
-        rSButtonMetro6.addActionListener(new java.awt.event.ActionListener() {
+        btncerrrar.setBackground(new java.awt.Color(38, 38, 38));
+        btncerrrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar2.png"))); // NOI18N
+        btncerrrar.setText("CERRAR SESIÓN");
+        btncerrrar.setColorHover(new java.awt.Color(215, 79, 42));
+        btncerrrar.setColorNormal(new java.awt.Color(38, 38, 38));
+        btncerrrar.setColorPressed(new java.awt.Color(150, 55, 29));
+        btncerrrar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btncerrrar.setIconTextGap(10);
+        btncerrrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rSButtonMetro6ActionPerformed(evt);
+                btncerrrarActionPerformed(evt);
             }
         });
-        jPanel3.add(rSButtonMetro6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 278, 220, 130));
+        jPanel3.add(btncerrrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 278, 220, 130));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 220, 610));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 220, 740));
+
+        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+        escritorio.setLayout(escritorioLayout);
+        escritorioLayout.setHorizontalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1130, Short.MAX_VALUE)
+        );
+        escritorioLayout.setVerticalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 740, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 1130, 740));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 758, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void rSButtonMetro3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro3ActionPerformed
+    private void btnprogramacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnprogramacionesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rSButtonMetro3ActionPerformed
+          Programaciones form=new Programaciones();
+        escritorio.add(form);
+        form.toFront();
+        form.setVisible(true);
+      
+    }//GEN-LAST:event_btnprogramacionesActionPerformed
 
-    private void rSButtonMetro4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro4ActionPerformed
+    private void btnhistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhistorialActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rSButtonMetro4ActionPerformed
+          Historial form=new Historial();
+        escritorio.add(form);
+        form.toFront();
+        form.setVisible(true);
+    }//GEN-LAST:event_btnhistorialActionPerformed
 
-    private void rSButtonMetro6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro6ActionPerformed
+    private void btncerrrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncerrrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rSButtonMetro6ActionPerformed
+        frLogin form=new frLogin();
+        form.toFront();
+        form.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_btncerrrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,13 +215,14 @@ public class frmMenuOrdenanzas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private rsbuttom.RSButtonMetro btncerrrar;
+    private rsbuttom.RSButtonMetro btnhistorial;
+    private rsbuttom.RSButtonMetro btnprogramaciones;
+    private javax.swing.JDesktopPane escritorio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private rsbuttom.RSButtonMetro rSButtonMetro3;
-    private rsbuttom.RSButtonMetro rSButtonMetro4;
-    private rsbuttom.RSButtonMetro rSButtonMetro6;
     // End of variables declaration//GEN-END:variables
 }
