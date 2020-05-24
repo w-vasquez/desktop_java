@@ -44,7 +44,7 @@ public class frmUsuario_Nuevo extends javax.swing.JInternalFrame {
         contenedor.addColumn("password");
         
         
-        tablausuarios.setModel(contenedor);
+        listausuario.setModel(contenedor);
         
         llenarTablaLaboratorios();
     }
@@ -123,7 +123,7 @@ public class frmUsuario_Nuevo extends javax.swing.JInternalFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel1.setBackground(new java.awt.Color(153, 0, 51));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registro de  Usuarios", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registro de  Usuarios", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 19), new java.awt.Color(255, 255, 255))); // NOI18N
 
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Nombre: ");
@@ -228,20 +228,18 @@ public class frmUsuario_Nuevo extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbotipo, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnguardar))
-                        .addGap(259, 259, 259))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabel17)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel12)
-                                .addComponent(jLabel14))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addGap(1, 1, 1)))
-                        .addGap(215, 215, 215))))
+                            .addComponent(btnguardar)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel8)
+                        .addComponent(jLabel16)
+                        .addComponent(jLabel17)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel14))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel13)
+                            .addGap(1, 1, 1))))
+                .addGap(259, 259, 259))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -302,7 +300,7 @@ public class frmUsuario_Nuevo extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnguardar)
                     .addComponent(btncancelar))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -321,11 +319,6 @@ public class frmUsuario_Nuevo extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        listausuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                listausuarioMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(listausuario);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -335,17 +328,19 @@ public class frmUsuario_Nuevo extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 563, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblregistros))
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(lblregistros)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -377,7 +372,7 @@ public class frmUsuario_Nuevo extends javax.swing.JInternalFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 580));
@@ -419,7 +414,7 @@ public class frmUsuario_Nuevo extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
        Usuario obj=new Usuario();
          String tipoUsuario="";
-        String id=txtidusuario.getText();
+        String id="0";
         String idTipo=cbotipo.getSelectedItem().toString();
         String nombre=txtnombre.getText();
         String apellido=txtapellido.getText();
@@ -442,13 +437,13 @@ public class frmUsuario_Nuevo extends javax.swing.JInternalFrame {
         }
         
         String api="https://limpieza.azurewebsites.net/WS/API/Usuario/insertar.php";
-        if(!id.equals("") && !nombre.equals("")&& !apellido.equals("")&& !fech.equals("")&& !correo.equals("")&& !telefono.equals("")&& !contra.equals(""))
+        if(!nombre.equals("")&& !apellido.equals("")&& !fech.equals("")&& !correo.equals("")&& !telefono.equals("")&& !contra.equals(""))
         {
             try
             {
                 obj.InsertarDatos(api, id, tipoUsuario, nombre, apellido, fech, correo, estado, telefono, contra);
                 String []Dato=new String[9];
-                    Dato[0]=id;
+                    //Dato[0]=id;
                     Dato[1]=tipoUsuario;
                     Dato[2]=nombre;
                     Dato[3]=apellido;
@@ -497,7 +492,7 @@ public class frmUsuario_Nuevo extends javax.swing.JInternalFrame {
 
     private void tablausuariosMouseClicked(java.awt.event.MouseEvent evt) {                                           
         // TODO add your handling code here:
-
+        System.out.println("nada");
     }                                         
 
     /**
