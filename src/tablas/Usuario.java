@@ -97,7 +97,13 @@ public class Usuario {
         return elJson;
     }
 
-    
+    public String mostrarDatos(String api)
+    {
+        RESThttp rest =new RESThttp();
+        String elJson=rest.sentenciaSelect(api);
+        
+        return elJson;
+    }
 
     
     
