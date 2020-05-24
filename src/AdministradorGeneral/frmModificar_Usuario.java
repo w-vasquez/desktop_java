@@ -5,6 +5,16 @@
  */
 package AdministradorGeneral;
 
+import com.google.gson.Gson;
+import java.io.IOException;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import org.json.JSONException;
+import tablas.Usuario;
+
 /**
  *
  * @author CRUZ_2019
@@ -14,8 +24,54 @@ public class frmModificar_Usuario extends javax.swing.JInternalFrame {
     /**
      * Creates new form frmUsuario_Nuevo
      */
-    public frmModificar_Usuario() {
+    DefaultTableModel contenedor;
+    public frmModificar_Usuario() 
+    {
         initComponents();
+        contenedor=new DefaultTableModel();
+        contenedor.addColumn("ID");
+        contenedor.addColumn("tipo usuario");
+        contenedor.addColumn("Nombre");
+        contenedor.addColumn("apellido");
+        contenedor.addColumn("fecha Nac");
+        contenedor.addColumn("correo");
+        contenedor.addColumn("estado");
+        contenedor.addColumn("Telefono");
+        contenedor.addColumn("password");
+        
+        
+        tablausuarios.setModel(contenedor);
+        
+        llenarTablaLaboratorios();
+    }
+    public void llenarTablaLaboratorios()
+    {
+        Usuario obj=new Usuario();
+        Vector fila;
+        Gson gson=new Gson();
+
+        String api="https://limpieza.azurewebsites.net/WS/API/Usuario/mostrar.php";
+
+        String elJson=obj.mostrarDatos(api);
+        
+        //convertimos a un obj de java
+        Usuario[] losUsuarios=gson.fromJson(elJson, Usuario[].class);
+        
+        for(Usuario registros: losUsuarios)
+        {
+            fila=new Vector();
+            fila.add(registros.getIdUsuario());
+            fila.add(registros.getIdTipoUsuario());
+            fila.add(registros.getNombre());
+            fila.add(registros.getApellido());
+            fila.add(registros.getF_noc());
+            fila.add(registros.getCorreo());
+            fila.add(registros.getEstado());
+            fila.add(registros.getTelefono());
+            fila.add(registros.getPassword());
+
+            contenedor.addRow(fila);
+        }
     }
 
     /**
@@ -49,11 +105,6 @@ public class frmModificar_Usuario extends javax.swing.JInternalFrame {
         jLabel17 = new javax.swing.JLabel();
         txtfechanac = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
-        jLabel18 = new javax.swing.JLabel();
-        txtbuscar = new javax.swing.JTextField();
-        btnbuscar = new javax.swing.JButton();
-        btneliminar = new javax.swing.JButton();
-        btnsalir = new javax.swing.JButton();
         lblregistros = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablausuarios = new javax.swing.JTable();
@@ -68,7 +119,7 @@ public class frmModificar_Usuario extends javax.swing.JInternalFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel1.setBackground(new java.awt.Color(224, 182, 0));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Modificar Usuarios", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Modificar Usuarios", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
 
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Nombre: ");
@@ -251,35 +302,6 @@ public class frmModificar_Usuario extends javax.swing.JInternalFrame {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista de Usuarios"));
 
-        jLabel18.setText("Buscar: ");
-
-        txtbuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtbuscarActionPerformed(evt);
-            }
-        });
-
-        btnbuscar.setText("Buscar");
-        btnbuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnbuscarActionPerformed(evt);
-            }
-        });
-
-        btneliminar.setText("Eliminar");
-        btneliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btneliminarActionPerformed(evt);
-            }
-        });
-
-        btnsalir.setText("Salir");
-        btnsalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnsalirActionPerformed(evt);
-            }
-        });
-
         lblregistros.setText("Registros:");
 
         tablausuarios.setModel(new javax.swing.table.DefaultTableModel(
@@ -305,40 +327,18 @@ public class frmModificar_Usuario extends javax.swing.JInternalFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel18)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(btnbuscar)
-                        .addGap(30, 30, 30)
-                        .addComponent(btneliminar)
-                        .addGap(49, 49, 49)
-                        .addComponent(btnsalir))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblregistros)
-                        .addGap(98, 98, 98)))
+                    .addComponent(lblregistros)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnbuscar)
-                    .addComponent(btneliminar)
-                    .addComponent(btnsalir))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblregistros)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(97, 97, 97))
         );
@@ -411,7 +411,57 @@ public class frmModificar_Usuario extends javax.swing.JInternalFrame {
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
         // TODO add your handling code here:
-       
+       Usuario obj=new Usuario();
+         String tipoUsuario="";
+        String id=txtidusuario.getText();
+        String idTipo=cbotipo.getSelectedItem().toString();
+        String nombre=txtnombre.getText();
+        String apellido=txtapellido.getText();
+        String fech=txtfechanac.getText();
+        String correo=txtcorreo.getText();
+        String telefono=txttelefono.getText();
+        String contra=txtcontraseña.getText();
+        String estado=cboestado.getSelectedItem().toString();
+        if(idTipo.equals("Administrador"))
+        {
+            tipoUsuario="1";
+        }
+        else if(idTipo.equals("Encargado"))
+        {
+            tipoUsuario="2";
+        }
+        else
+        {
+            tipoUsuario="3";
+        }
+        
+        String api="https://limpieza.azurewebsites.net/WS/API/Usuario/actualizar.php";
+        if(!id.equals("") && !nombre.equals("")&& !apellido.equals("")&& !fech.equals("")&& !correo.equals("")&& !telefono.equals("")&& !contra.equals(""))
+        {
+            try
+            {
+                obj.InsertarDatos(api, id, tipoUsuario, nombre, apellido, fech, correo, estado, telefono, contra);
+                
+                    txtidusuario.setText("");
+                    txtnombre.setText("");
+                    txtapellido.setText("");
+                    txtfechanac.setText("");
+                    txtcorreo.setText("");
+                    txttelefono.setText("");
+                    txtcontraseña.setText("");
+ 
+                    JOptionPane.showMessageDialog(rootPane, "Usuario Actualizado");
+                    
+            } catch (JSONException ex) {
+               Logger.getLogger(frmModificar_Usuario.class.getName()).log(Level.SEVERE, null, ex);
+           } catch (IOException ex) {
+               Logger.getLogger(frmModificar_Usuario.class.getName()).log(Level.SEVERE, null, ex);
+           }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(rootPane, "Necesita llenar todos los campos");
+        }
 
     }//GEN-LAST:event_btnguardarActionPerformed
 
@@ -430,26 +480,18 @@ public class frmModificar_Usuario extends javax.swing.JInternalFrame {
         txtfechanac.transferFocus();
     }//GEN-LAST:event_txtfechanacActionPerformed
 
-    private void txtbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtbuscarActionPerformed
-
-    private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnbuscarActionPerformed
-
-    private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btneliminarActionPerformed
-
-    private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_btnsalirActionPerformed
-
     private void tablausuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablausuariosMouseClicked
         // TODO add your handling code here:
-
+        int seleccionarDatos=tablausuarios.rowAtPoint(evt.getPoint());
+        txtidusuario.setText(String.valueOf(tablausuarios.getValueAt(seleccionarDatos, 0)));
+        cbotipo.setSelectedItem(String.valueOf(tablausuarios.getValueAt(seleccionarDatos, 1)));
+        txtnombre.setText(String.valueOf(tablausuarios.getValueAt(seleccionarDatos, 2)));
+        txtapellido.setText(String.valueOf(tablausuarios.getValueAt(seleccionarDatos, 3)));
+        txtfechanac.setText(String.valueOf(tablausuarios.getValueAt(seleccionarDatos, 4)));
+        txtcorreo.setText(String.valueOf(tablausuarios.getValueAt(seleccionarDatos, 5)));
+        cboestado.setSelectedItem(String.valueOf(tablausuarios.getValueAt(seleccionarDatos, 6)));
+        txttelefono.setText(String.valueOf(tablausuarios.getValueAt(seleccionarDatos, 7)));
+        txtcontraseña.setText(String.valueOf(tablausuarios.getValueAt(seleccionarDatos, 8)));
     }//GEN-LAST:event_tablausuariosMouseClicked
 
     /**
@@ -491,11 +533,8 @@ public class frmModificar_Usuario extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnbuscar;
     private javax.swing.JButton btncancelar;
-    private javax.swing.JButton btneliminar;
     private javax.swing.JButton btnguardar;
-    private javax.swing.JButton btnsalir;
     private javax.swing.JComboBox<String> cboestado;
     private javax.swing.JComboBox<String> cbotipo;
     private javax.swing.JLabel jLabel1;
@@ -506,7 +545,6 @@ public class frmModificar_Usuario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
@@ -515,7 +553,6 @@ public class frmModificar_Usuario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblregistros;
     private javax.swing.JTable tablausuarios;
     private javax.swing.JTextField txtapellido;
-    private javax.swing.JTextField txtbuscar;
     private javax.swing.JTextField txtcontraseña;
     private javax.swing.JTextField txtcorreo;
     private javax.swing.JTextField txtfechanac;

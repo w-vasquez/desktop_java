@@ -6,6 +6,7 @@
 package AdministradorGeneral;
 
 //import EncargadoDeLaboratorio.Nuevo_Lab;
+import Datos.Usuarios;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.util.Vector;
@@ -14,7 +15,9 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.json.JSONException;
+import tablas.Edificios;
 import tablas.Laboratorios;
+import tablas.Usuario;
 
 /**
  *
@@ -41,14 +44,18 @@ public class NuevoLab extends javax.swing.JInternalFrame{
         listLaboratorios.setModel(contenedor);
         
         llenarTablaLaboratorios();
+        
+        llenarResponsables();
+        llenarEdificio();
     }
     public void llenarTablaLaboratorios()
     {
         Laboratorios objLaboratorios=new Laboratorios();
         Vector fila;
         Gson gson=new Gson();
-        String api="https://limpieza.azurewebsites.net/WS/API/laboratorio/mostrar.php";
-        
+        //https://limpieza.azurewebsites.net/WS/API/laboratorio/mostrar.php
+        String api="https://limpieza.azurewebsites.net/WS/API/consultasAdmin/tablaLab.php";
+        //https://limpieza.azurewebsites.net/WS/API/consultasAdmin/tablaLab.php
         String elJson=objLaboratorios.mostrarDatos(api);
         
         //convertimos a un obj de java
@@ -58,12 +65,43 @@ public class NuevoLab extends javax.swing.JInternalFrame{
         {
             fila=new Vector();
             fila.add(registros.getIdLaboratorio());
-            fila.add(registros.getNombre());
+            fila.add(registros.getNombre() );
             fila.add(registros.getResponsable());
             fila.add(registros.getCapacidad());
             fila.add(registros.getEdificio());
             fila.add(registros.getTelefono());
             contenedor.addRow(fila);
+        }
+    }
+    public void llenarResponsables()
+    {
+        Usuario obj=new Usuario();
+        
+        String api="https://limpieza.azurewebsites.net/WS/API/consultasAdmin/responsables.php";
+        Gson gson=new Gson();
+        
+        String elJson=obj.mostrarDatos(api);
+        
+        Usuario[] responsables=gson.fromJson(elJson, Usuario[].class);
+        for(Usuario registros:responsables)
+        {
+            cmbResponsable.addItem(String.valueOf(registros.getIdUsuario()));
+        }
+    }
+    
+    public void llenarEdificio()
+    {
+        Edificios obj=new Edificios();
+        
+        String api="https://limpieza.azurewebsites.net/WS/API/consultasAdmin/edifi.php";
+        Gson gson=new Gson();
+        
+        String elJson=obj.mostrarDatos(api);
+        
+        Edificios[] edificios=gson.fromJson(elJson, Edificios[].class);
+        for(Edificios registros:edificios)
+        {
+            cmbUbicacion.addItem(registros.getIdEdificio());
         }
     }
 
@@ -84,13 +122,13 @@ public class NuevoLab extends javax.swing.JInternalFrame{
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
-        txtEdificio = new javax.swing.JTextField();
         btnguardar = new javax.swing.JButton();
         btncancelar = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
-        txtResponsable = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         txtCapacidad = new javax.swing.JTextField();
+        cmbResponsable = new javax.swing.JComboBox<>();
+        cmbUbicacion = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         lblregistros = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -129,12 +167,6 @@ public class NuevoLab extends javax.swing.JInternalFrame{
             }
         });
 
-        txtEdificio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEdificioActionPerformed(evt);
-            }
-        });
-
         btnguardar.setText("Guardar");
         btnguardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,12 +184,6 @@ public class NuevoLab extends javax.swing.JInternalFrame{
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Responsable");
 
-        txtResponsable.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtResponsableActionPerformed(evt);
-            }
-        });
-
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Capacidad");
 
@@ -171,7 +197,7 @@ public class NuevoLab extends javax.swing.JInternalFrame{
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel8)
@@ -179,20 +205,18 @@ public class NuevoLab extends javax.swing.JInternalFrame{
                     .addComponent(jLabel17)
                     .addComponent(jLabel14)
                     .addComponent(jLabel13))
-                .addGap(498, 498, 498))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(149, 149, 149)
+                .addGap(68, 68, 68)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnguardar)
                         .addGap(57, 57, 57)
                         .addComponent(btncancelar))
-                    .addComponent(txtEdificio, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtResponsable, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbResponsable, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -207,7 +231,7 @@ public class NuevoLab extends javax.swing.JInternalFrame{
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
-                    .addComponent(txtResponsable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbResponsable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
@@ -215,7 +239,7 @@ public class NuevoLab extends javax.swing.JInternalFrame{
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(txtEdificio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
@@ -224,7 +248,7 @@ public class NuevoLab extends javax.swing.JInternalFrame{
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnguardar)
                     .addComponent(btncancelar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -325,9 +349,9 @@ public class NuevoLab extends javax.swing.JInternalFrame{
        Laboratorios objLaboratorios=new Laboratorios();
         String id=txtID.getText();
         String nombre=txtNombre.getText();
-        String responsable=txtResponsable.getText();
+        String responsable=cmbResponsable.getSelectedItem().toString() ;
         String capacidad=txtCapacidad.getText();
-        String ubicacion=txtEdificio.getText();
+        String ubicacion=cmbUbicacion.getSelectedItem().toString();
         String telefono=txtTelefono.getText();
         
         String api="https://limpieza.azurewebsites.net/WS/API/laboratorio/insertar.php";
@@ -346,9 +370,7 @@ public class NuevoLab extends javax.swing.JInternalFrame{
                     Dato[5]=telefono;
                     txtID.setText("");
                     txtNombre.setText("");
-                    txtResponsable.setText("");
                     txtCapacidad.setText("");
-                    txtEdificio.setText("");
                     txtTelefono.setText("");
                     contenedor.addRow(Dato);
                     
@@ -384,16 +406,6 @@ public class NuevoLab extends javax.swing.JInternalFrame{
         // TODO add your handling code here:
 
     }//GEN-LAST:event_listLaboratoriosMouseClicked
-
-    private void txtEdificioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdificioActionPerformed
-        // TODO add your handling code here:
-        txtEdificio.transferFocus();
-    }//GEN-LAST:event_txtEdificioActionPerformed
-
-    private void txtResponsableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtResponsableActionPerformed
-        // TODO add your handling code here:
-        txtResponsable.transferFocus();
-    }//GEN-LAST:event_txtResponsableActionPerformed
 
     /**
      * @param args the command line arguments
@@ -434,6 +446,8 @@ public class NuevoLab extends javax.swing.JInternalFrame{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btncancelar;
     private javax.swing.JButton btnguardar;
+    private javax.swing.JComboBox<String> cmbResponsable;
+    private javax.swing.JComboBox<String> cmbUbicacion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -447,10 +461,8 @@ public class NuevoLab extends javax.swing.JInternalFrame{
     private javax.swing.JLabel lblregistros;
     private javax.swing.JTable listLaboratorios;
     private javax.swing.JTextField txtCapacidad;
-    private javax.swing.JTextField txtEdificio;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtResponsable;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }

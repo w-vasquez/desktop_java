@@ -145,6 +145,11 @@ public class frLogin extends javax.swing.JFrame {
 
         btnsalir.setBackground(new java.awt.Color(173, 16, 60));
         btnsalir.setText("Salir");
+        btnsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsalirActionPerformed(evt);
+            }
+        });
 
         btningresra.setBackground(new java.awt.Color(173, 16, 60));
         btningresra.setText("Ingresar");
@@ -250,6 +255,11 @@ public class frLogin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Revisar nombre de usuario o contraseña");
         }
     }//GEN-LAST:event_btningresraActionPerformed
+
+    private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnsalirActionPerformed
 
     /**
      * @param args the command line arguments

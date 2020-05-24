@@ -17,10 +17,10 @@ import org.json.JSONObject;
 public class Laboratorios 
 {
     private String idLaboratorio;
-    private String nombre;
-    private String responsable;
+    private String laboratorio;
+    private String Responsable;
     private String capacidad;
-    private String edificio;
+    private String Edificio;
     private String telefono;
     
     /**
@@ -41,28 +41,28 @@ public class Laboratorios
      * @return the nombre
      */
     public String getNombre() {
-        return nombre;
+        return laboratorio;
     }
 
     /**
      * @param nombre the nombre to set
      */
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        this.laboratorio = nombre;
     }
 
     /**
      * @return the responsable
      */
     public String getResponsable() {
-        return responsable;
+        return Responsable;
     }
 
     /**
      * @param responsable the responsable to set
      */
     public void setResponsable(String responsable) {
-        this.responsable = responsable;
+        this.Responsable = responsable;
     }
 
     /**
@@ -83,14 +83,14 @@ public class Laboratorios
      * @return the edificio
      */
     public String getEdificio() {
-        return edificio;
+        return Edificio;
     }
 
     /**
      * @param edificio the edificio to set
      */
     public void setEdificio(String edificio) {
-        this.edificio = edificio;
+        this.Edificio = edificio;
     }
 
     /**
@@ -101,10 +101,10 @@ public class Laboratorios
     }
 
     /**
-     * @param telefono the telefono to set
+     * @param Telefono the telefono to set
      */
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setTelefono(String Telefono) {
+        this.telefono = Telefono;
     }
     
     //metodo para devolver uno o varios datos
@@ -112,7 +112,7 @@ public class Laboratorios
     {
         RESThttp rest =new RESThttp();
         String elJson=rest.sentenciaSelect(api);
-        
+        System.out.println(elJson);
         return elJson;
     }
     
