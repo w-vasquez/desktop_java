@@ -68,7 +68,7 @@ public class frmAsiganar_Ordenanzas extends javax.swing.JInternalFrame {
         Gson gson=new Gson();
         Gson gson2=new Gson();
         Gson gson3=new Gson();
-        String api="https://limpieza.azurewebsites.net/WS/API/laboratorio/mostrar.php";
+        String api="https://limpieza.azurewebsites.net/WS/API/consultasAdmin/tablaLab.php";
         String api2="https://limpieza.azurewebsites.net/WS/API/Usuario/mostrar.php";
         String api3="http://limpieza.azurewebsites.net/WS/API/ordenanzaLaboratorio/mostrar.php";
  

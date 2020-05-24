@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.json.JSONException;
 import tablas.Edificios;
+import tablas.Usuario;
 //import Mensajes.Confirmacion;
 
 /**
@@ -41,6 +42,7 @@ public class frmModificar_Edificio extends javax.swing.JInternalFrame{
         listaEdificios.setModel(contenedor);
         
         llenarTablaEdificios();
+        llenarResponsables();
     }
     
     public void llenarTablaEdificios()
@@ -48,7 +50,7 @@ public class frmModificar_Edificio extends javax.swing.JInternalFrame{
         Edificios obj=new Edificios();
         Vector fila;
         Gson gson=new Gson();
-        String api="https://limpieza.azurewebsites.net/WS/API/Edificio/mostrar.php";
+        String api="https://limpieza.azurewebsites.net/WS/API/consultasAdmin/tablaEdi.php";
         
         String elJson=obj.mostrarDatos(api);
         
@@ -65,6 +67,21 @@ public class frmModificar_Edificio extends javax.swing.JInternalFrame{
             fila.add(registros.getTelefono());
             fila.add(registros.getEstado());
             contenedor.addRow(fila);
+        }
+    }
+    public void llenarResponsables()
+    {
+        Usuario obj=new Usuario();
+        
+        String api="https://limpieza.azurewebsites.net/WS/API/consultasAdmin/responsables.php";
+        Gson gson=new Gson();
+        
+        String elJson=obj.mostrarDatos(api);
+        
+        Usuario[] responsables=gson.fromJson(elJson, Usuario[].class);
+        for(Usuario registros:responsables)
+        {
+            cmbResponsable.addItem(registros.getIdUsuario());
         }
     }
 
@@ -89,10 +106,10 @@ public class frmModificar_Edificio extends javax.swing.JInternalFrame{
         txtTelefono = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtDireccion = new javax.swing.JTextField();
-        txtIDresponsable = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         txtID = new javax.swing.JTextField();
         cmbEstado = new javax.swing.JComboBox<>();
+        cmbResponsable = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -126,6 +143,11 @@ public class frmModificar_Edificio extends javax.swing.JInternalFrame{
         });
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -165,28 +187,30 @@ public class frmModificar_Edificio extends javax.swing.JInternalFrame{
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jLabel9))
-                                        .addGap(63, 63, 63))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addGap(18, 18, 18)))
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel9))
+                                .addGap(63, 63, 63)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
-                                    .addComponent(txtIDresponsable, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
                                     .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
                                     .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel8))
-                                .addGap(70, 70, 70)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel8))
+                                        .addGap(70, 70, 70))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addGap(12, 12, 12)))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cmbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(cmbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(14, 14, 14)
+                                        .addComponent(cmbResponsable, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 56, Short.MAX_VALUE)))
                 .addGap(69, 69, 69))
         );
@@ -208,7 +232,7 @@ public class frmModificar_Edificio extends javax.swing.JInternalFrame{
                 .addGap(47, 47, 47)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtIDresponsable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbResponsable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(53, 53, 53)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -320,7 +344,7 @@ public class frmModificar_Edificio extends javax.swing.JInternalFrame{
         String id=txtID.getText();
         String nombre=txtNombre.getText();
         String direcion=txtDireccion.getText();
-        String responsable=txtIDresponsable.getText();
+        String responsable=cmbResponsable.getSelectedItem().toString() ;
         String telefono=txtTelefono.getText();
         String estado=cmbEstado.getSelectedItem().toString();
         
@@ -346,7 +370,6 @@ public class frmModificar_Edificio extends javax.swing.JInternalFrame{
                     txtID.setText("");
                     txtNombre.setText("");
                     txtDireccion.setText("");
-                    txtIDresponsable.setText("");
                     txtTelefono.setText("");
                     contenedor.addRow(Dato);
                     
@@ -370,10 +393,15 @@ public class frmModificar_Edificio extends javax.swing.JInternalFrame{
         txtID.setText(String.valueOf(listaEdificios.getValueAt(seleccionarDatos, 0)));
         txtNombre.setText(String.valueOf(listaEdificios.getValueAt(seleccionarDatos, 1)));
         txtDireccion.setText(String.valueOf(listaEdificios.getValueAt(seleccionarDatos, 2)));
-        txtIDresponsable.setText(String.valueOf(listaEdificios.getValueAt(seleccionarDatos, 3)));
+        cmbResponsable.setSelectedItem(String.valueOf(listaEdificios.getValueAt(seleccionarDatos, 3)));
         txtTelefono.setText(String.valueOf(listaEdificios.getValueAt(seleccionarDatos, 4)));
         cmbEstado.setSelectedItem(String.valueOf(listaEdificios.getValueAt(seleccionarDatos, 5)));
     }//GEN-LAST:event_listaEdificiosMouseClicked
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -429,6 +457,7 @@ public class frmModificar_Edificio extends javax.swing.JInternalFrame{
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JComboBox<String> cmbEstado;
+    private javax.swing.JComboBox<String> cmbResponsable;
     private javax.swing.JPanel fondo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
@@ -443,7 +472,6 @@ public class frmModificar_Edificio extends javax.swing.JInternalFrame{
     private javax.swing.JTable listaEdificios;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtID;
-    private javax.swing.JTextField txtIDresponsable;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables

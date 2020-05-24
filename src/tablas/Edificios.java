@@ -37,14 +37,14 @@ public class Edificios
      * @return the nombre
      */
     public String getNombre() {
-        return nombre;
+        return Edificio;
     }
 
     /**
      * @param nombre the nombre to set
      */
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        this.Edificio = nombre;
     }
 
     /**
@@ -65,14 +65,14 @@ public class Edificios
      * @return the responsable
      */
     public String getResponsable() {
-        return responsable;
+        return Responsable;
     }
 
     /**
      * @param responsable the responsable to set
      */
     public void setResponsable(String responsable) {
-        this.responsable = responsable;
+        this.Responsable = responsable;
     }
 
     /**
@@ -103,9 +103,9 @@ public class Edificios
         this.estado = estado;
     }
     private String idEdificio;
-    private String nombre;
+    private String Edificio;
     private String direccion;
-    private String responsable;
+    private String Responsable;
     private String telefono;
     private String estado;
     

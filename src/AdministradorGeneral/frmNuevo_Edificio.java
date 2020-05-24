@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
 import org.json.JSONException;
 import tablas.Edificios;
 import tablas.Laboratorios;
+import tablas.Usuario;
 //import Mensajes.Confirmacion;
 /**
  *
@@ -32,7 +33,7 @@ public class frmNuevo_Edificio extends javax.swing.JInternalFrame{
         initComponents();
         contenedor=new DefaultTableModel();
         contenedor.addColumn("ID");
-        contenedor.addColumn("Nombre");
+        contenedor.addColumn("Edificio");
         contenedor.addColumn("Direccion");
         contenedor.addColumn("Responsable");
         contenedor.addColumn("Telefono");
@@ -41,18 +42,20 @@ public class frmNuevo_Edificio extends javax.swing.JInternalFrame{
         listaEdificios.setModel(contenedor);
         
         llenarTablaEdificios();
+        llenarResponsables();
     }
     public void llenarTablaEdificios()
     {
         Edificios obj=new Edificios();
-        Vector fila;
+        Vector fila,fila2;
         Gson gson=new Gson();
-        String api="https://limpieza.azurewebsites.net/WS/API/Edificio/mostrar.php";
-        
+        String api="https://limpieza.azurewebsites.net/WS/API/consultasAdmin/tablaEdi.php";
+
         String elJson=obj.mostrarDatos(api);
-        
         //convertimos a un obj de java
         Edificios[] losEdificios=gson.fromJson(elJson, Edificios[].class);
+
+        
         
         for(Edificios registros: losEdificios)
         {
@@ -64,6 +67,21 @@ public class frmNuevo_Edificio extends javax.swing.JInternalFrame{
             fila.add(registros.getTelefono());
             fila.add(registros.getEstado());
             contenedor.addRow(fila);
+        }
+    }
+    public void llenarResponsables()
+    {
+        Usuario obj=new Usuario();
+        
+        String api="https://limpieza.azurewebsites.net/WS/API/consultasAdmin/responsables.php";
+        Gson gson=new Gson();
+        
+        String elJson=obj.mostrarDatos(api);
+        
+        Usuario[] responsables=gson.fromJson(elJson, Usuario[].class);
+        for(Usuario registros:responsables)
+        {
+            cmbResponsable.addItem(registros.getIdUsuario());
         }
     }
 
@@ -88,10 +106,10 @@ public class frmNuevo_Edificio extends javax.swing.JInternalFrame{
         txtTelefono = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtDireccion = new javax.swing.JTextField();
-        txtIDresponsable = new javax.swing.JTextField();
         cmbEstado = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
+        cmbResponsable = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -125,6 +143,11 @@ public class frmNuevo_Edificio extends javax.swing.JInternalFrame{
         });
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -188,7 +211,7 @@ public class frmNuevo_Edificio extends javax.swing.JInternalFrame{
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtIDresponsable, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cmbResponsable, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(69, 69, 69))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,7 +236,7 @@ public class frmNuevo_Edificio extends javax.swing.JInternalFrame{
                 .addGap(46, 46, 46)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtIDresponsable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbResponsable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(66, 66, 66)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -327,7 +350,7 @@ public class frmNuevo_Edificio extends javax.swing.JInternalFrame{
         String id=txtID.getText();
         String nombre=txtNombre.getText();
         String direcion=txtDireccion.getText();
-        String responsable=txtIDresponsable.getText();
+        String responsable=cmbResponsable.getSelectedItem().toString() ;
         String telefono=txtTelefono.getText();
         String estado=cmbEstado.getSelectedItem().toString();
         
@@ -349,7 +372,6 @@ public class frmNuevo_Edificio extends javax.swing.JInternalFrame{
                     txtID.setText("");
                     txtNombre.setText("");
                     txtDireccion.setText("");
-                    txtIDresponsable.setText("");
                     txtTelefono.setText("");
                     contenedor.addRow(Dato);
                     
@@ -370,6 +392,11 @@ public class frmNuevo_Edificio extends javax.swing.JInternalFrame{
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -417,6 +444,7 @@ public class frmNuevo_Edificio extends javax.swing.JInternalFrame{
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox<String> cmbEstado;
+    private javax.swing.JComboBox<String> cmbResponsable;
     private javax.swing.JPanel fondo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
@@ -431,7 +459,6 @@ public class frmNuevo_Edificio extends javax.swing.JInternalFrame{
     private javax.swing.JTable listaEdificios;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtID;
-    private javax.swing.JTextField txtIDresponsable;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables

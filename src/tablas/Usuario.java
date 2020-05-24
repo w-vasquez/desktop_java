@@ -1,6 +1,9 @@
 package tablas;
 
 import Datos.RESThttp;
+import java.io.IOException;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class Usuario {
@@ -104,7 +107,27 @@ public class Usuario {
         
         return elJson;
     }
+    
+    public void InsertarDatos(String api,String id,String idtipo,String nombre,String apellido,String fec,String correo ,String estado ,String telefono ,String pass) throws JSONException, IOException
+    {
+        RESThttp rest =new RESThttp();
+          
+        //{"idUsuario":"1","idTipoUsuario":"1","nombre":"Wilfredo","apellido":"Vasquez","f_noc":"2020-05-12",
+        //"correo":"2740882018@mail.utec.edu.sv","estado":"Activo","telefono":"77877658","password":"123"
+       JSONObject objeto = new JSONObject();
+        objeto.put("idUsuario", id);
+        objeto.put("idTipoUsuario", idtipo);
+        objeto.put("nombre", nombre);
+        objeto.put("apellido", apellido);
+        objeto.put("f_noc", fec);
+        objeto.put("correo", correo);
+        objeto.put("estado", estado);
+        objeto.put("telefono", telefono);
+        objeto.put("password", pass);
 
+        
+        rest.sentenciaAccion(api,objeto);
+    }
     
     
 }
