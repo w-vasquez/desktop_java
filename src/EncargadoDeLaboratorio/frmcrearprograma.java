@@ -5,17 +5,107 @@
  */
 package EncargadoDeLaboratorio;
 
+import static EncargadoDeLaboratorio.frmProgramaciones.listaprogramciones;
+import com.google.gson.Gson;
+import java.sql.Statement;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import tablas.Programaciones;
+import tablas.Usuario;
+
 /**
  *
  * @author CRUZ_2019
  */
-public class frmcrearprograma extends javax.swing.JInternalFrame{
+public class frmcrearprograma extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form frmcrearprograma
      */
+    Programaciones objProgramaciones;
+    public Integer totalregistros;
+    DefaultTableModel modelo;
+    Statement objEjecutaConsulta;
+
     public frmcrearprograma() {
         initComponents();
+        objProgramaciones = new Programaciones();
+        modelo = new DefaultTableModel();
+
+        listaprogramciones.setModel(modelo);
+
+        mostrar("");
+
+        //lblregistros.setText("Total registros" + Integer.toString(totalregistros));
+    }
+
+    void limpiarcampos() {
+        txtidprogramacion.setText("");
+        txttiempotranscurrio.setText("");
+        txthorarioprogra.setText("");
+        txtcalificacion.setText("");
+        txtestadolimpieza.setText("");
+        txtestadocalificacion.setText("");
+        txtcomentarios.setText("");
+
+    }
+
+    void mostrar(String buscar) {
+        // TODO add your handling code here:
+        //Instanciar clase de la tabla
+
+        Gson gson = new Gson();
+
+        totalregistros = 0;
+        //instansiar la clase Gson que convierte el Json a array en java
+        //Gson gson = new Gson();
+        //envio datos al metodo
+        String url = "http://limpieza.azurewebsites.net/WS/API/programacion/mostrar.php";
+
+        //Ejecuto consulta con los parametros de link
+        String elJson = objProgramaciones.consultaCrediencial(url);
+
+        //convertir a objeto de java
+        Programaciones[] listado = gson.fromJson(elJson, Programaciones[].class);
+        DefaultTableModel modelo;
+        modelo = new DefaultTableModel();
+        modelo.addColumn("IdProgramacion");
+        modelo.addColumn("Tiempo");
+        modelo.addColumn("Horarios");
+        modelo.addColumn("Calificacion");
+        modelo.addColumn("Estado Limpieza");
+        modelo.addColumn("Estado Calificacion");
+        modelo.addColumn("Comentario");
+        Vector fila;
+        listaprogramciones.setModel(modelo);
+
+        //PARA SABER CUANTOS REGISTROS EXISTEN
+        //int cantidadRegistros = objUsuarios.getCantidadRegistros();
+        //PARA CREAR REGISTROS POR REGISTROS
+        //DE LA TABLA DE NUESTRA BASE DE DATOS
+        for (Programaciones registros : listado) {
+
+            //CREAMOS UNA NUEVA FILA PARA LA TABLA
+            fila = new Vector();
+            // AGREGAMOS LA MISMA FILA PARA LA TABLA
+            //A NUESTRO VECTOR
+
+            //fila.add(indice);
+            fila.add(registros.getIdProgramacion());
+            fila.add(registros.getTiempoTranscurrido());
+            fila.add(registros.getHorario());
+            fila.add(registros.getCalificacion());
+            fila.add(registros.getEstadoLimpieza());
+            fila.add(registros.getEstadoCalificacion());
+            fila.add(registros.getComentario());
+
+            //AGREGAMOS LA FILA COMPLETA DE DATOS
+            //AL CONTENEDOR QUE ESTAMOS DIBUJANDO
+            totalregistros++;
+            modelo.addRow(fila);
+        }
+        lblregistros.setText("Total registros: " + Integer.toString(totalregistros));
     }
 
     /**
@@ -27,23 +117,41 @@ public class frmcrearprograma extends javax.swing.JInternalFrame{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel12 = new javax.swing.JLabel();
         fondo = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtidprogramacion = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        txttiempotranscurrio = new javax.swing.JTextField();
+        btnmodificar = new javax.swing.JButton();
+        btncancelar = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        txthorarioprogra = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txtcalificacion = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        txtestadolimpieza = new javax.swing.JTextField();
+        txtestadocalificacion = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtcomentarios = new javax.swing.JTextArea();
+        btnnuevo = new javax.swing.JButton();
+        btnvistacalificacion = new javax.swing.JButton();
+        btnvistahorario = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        listaprogramciones = new javax.swing.JTable();
+        jLabel13 = new javax.swing.JLabel();
+        txtidpro = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        lblregistros = new javax.swing.JLabel();
+        btneliminar = new javax.swing.JButton();
+
+        jLabel12.setText("jLabel12");
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -57,134 +165,301 @@ public class frmcrearprograma extends javax.swing.JInternalFrame{
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Nombre:");
+        jLabel2.setText("ID:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtidprogramacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtidprogramacionActionPerformed(evt);
             }
         });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Ordenanza");
+        jLabel3.setText("Tiempo Transcurido:");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txttiempotranscurrio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txttiempotranscurrioActionPerformed(evt);
             }
         });
 
-        jButton1.setText("...");
+        btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png"))); // NOI18N
+        btnmodificar.setText("Modificar");
+        btnmodificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnmodificarActionPerformed(evt);
+            }
+        });
 
-        jPanel2.setBackground(new java.awt.Color(173, 16, 60));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Programacion", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
+        btncancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancelar.png"))); // NOI18N
+        btncancelar.setText("Cancelar");
+        btncancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncancelarActionPerformed(evt);
+            }
+        });
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Fecha inicio:");
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Horario:");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Fecha final:");
+        txthorarioprogra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txthorarioprograActionPerformed(evt);
+            }
+        });
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Horarios:");
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Calificacion:");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField3))
-                .addContainerGap(71, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(65, 65, 65)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addContainerGap(78, Short.MAX_VALUE))
-        );
+        txtcalificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtcalificacionActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Nuevo");
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Estado de la limpieza:");
 
-        jButton3.setText("Cancelar");
+        txtestadolimpieza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtestadolimpiezaActionPerformed(evt);
+            }
+        });
+
+        txtestadocalificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtestadocalificacionActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Comentario:");
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Estado de la Calificacion:");
+
+        txtcomentarios.setColumns(20);
+        txtcomentarios.setRows(5);
+        jScrollPane1.setViewportView(txtcomentarios);
+
+        btnnuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/nuevo.GIF"))); // NOI18N
+        btnnuevo.setText("Nuevo");
+        btnnuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnnuevoActionPerformed(evt);
+            }
+        });
+
+        btnvistacalificacion.setText("...");
+        btnvistacalificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnvistacalificacionActionPerformed(evt);
+            }
+        });
+
+        btnvistahorario.setText("...");
+        btnvistahorario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnvistahorarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59)
+                .addComponent(btncancelar)
+                .addGap(82, 82, 82))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel2))
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txttiempotranscurrio, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(txthorarioprogra, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnvistahorario, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(txtcalificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnvistacalificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtidprogramacion, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtestadolimpieza, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel11)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(txtestadocalificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(92, 92, 92)
-                        .addComponent(jButton3)))
-                .addGap(44, 44, 44)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(89, 89, 89)
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(43, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(62, 62, 62)
+                    .addComponent(btnnuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(397, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(91, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(101, 101, 101)
+                .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(61, 61, 61)
+                    .addComponent(txtidprogramacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txttiempotranscurrio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(107, 107, 107))
+                    .addComponent(jLabel7)
+                    .addComponent(txthorarioprogra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnvistahorario))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txtcalificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnvistacalificacion))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtestadolimpieza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtestadocalificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11)))
+                    .addComponent(jLabel9))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btncancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel10))
+                .addContainerGap(24, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(386, Short.MAX_VALUE)
+                    .addComponent(btnnuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(23, 23, 23)))
         );
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("PROGRAMACIONES");
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista de programaciones"));
+
+        listaprogramciones.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        listaprogramciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listaprogramcionesMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(listaprogramciones);
+
+        jLabel13.setText("Programacion:");
+
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir.gif"))); // NOI18N
+        jButton5.setText("Salir");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        lblregistros.setText("Registros:");
+
+        btneliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar.png"))); // NOI18N
+        btneliminar.setText("Eliminar");
+        btneliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btneliminarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(lblregistros)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(jLabel13)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtidpro, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(32, 32, 32)
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jButton5)
+                            .addGap(18, 18, 18)
+                            .addComponent(btneliminar)
+                            .addGap(36, 36, 36)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(45, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(txtidpro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar)
+                    .addComponent(jButton5)
+                    .addComponent(btneliminar))
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblregistros)
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
         fondo.setLayout(fondoLayout);
@@ -197,23 +472,28 @@ public class frmcrearprograma extends javax.swing.JInternalFrame{
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(390, 390, 390))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(247, 247, 247))
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
+            .addGroup(fondoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondo, javax.swing.GroupLayout.PREFERRED_SIZE, 1018, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 1306, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,13 +503,248 @@ public class frmcrearprograma extends javax.swing.JInternalFrame{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtidprogramacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidprogramacionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtidprogramacionActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txttiempotranscurrioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttiempotranscurrioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txttiempotranscurrioActionPerformed
+
+    private void txthorarioprograActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txthorarioprograActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txthorarioprograActionPerformed
+
+    private void txtcalificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcalificacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtcalificacionActionPerformed
+
+    private void txtestadolimpiezaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtestadolimpiezaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtestadolimpiezaActionPerformed
+
+    private void txtestadocalificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtestadocalificacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtestadocalificacionActionPerformed
+
+    private void listaprogramcionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaprogramcionesMouseClicked
+        // TODO add your handling code here:
+
+        int fila = listaprogramciones.rowAtPoint(evt.getPoint());
+
+        txtidprogramacion.setText(listaprogramciones.getValueAt(fila, 0).toString());
+        txttiempotranscurrio.setText(listaprogramciones.getValueAt(fila, 1).toString());
+        txthorarioprogra.setText(listaprogramciones.getValueAt(fila, 2).toString());
+        txtcalificacion.setText(listaprogramciones.getValueAt(fila, 3).toString());
+        txtestadolimpieza.setText(listaprogramciones.getValueAt(fila, 4).toString());
+        txtestadocalificacion.setText(listaprogramciones.getValueAt(fila, 5).toString());
+        txtcomentarios.setText(listaprogramciones.getValueAt(fila, 6).toString());
+
+    }//GEN-LAST:event_listaprogramcionesMouseClicked
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+
+        Gson gson = new Gson();
+        Programaciones func = new Programaciones();
+
+        String idprogramacion = txtidpro.getText();
+
+        String url = "http://limpieza.azurewebsites.net/WS/API/programacion/mostrarP.php?";
+
+        String parametros = "idProgramacion=" + idprogramacion;
+
+        //Ejecuto consulta con los parametros de link
+        String elJson = "[" + func.consultaCrediencial(url + parametros) + "]";
+
+        try {
+
+            if (!txtidpro.getText().equals("")) {
+                //Ejecuto consulta con los parametros de link
+
+                //convertir a objeto de java
+                Programaciones[] listado = gson.fromJson(elJson, Programaciones[].class);
+                DefaultTableModel modelo;
+                modelo = new DefaultTableModel();
+                modelo.addColumn("ID");
+                modelo.addColumn("Tiempo");
+                modelo.addColumn("Horarios");
+                modelo.addColumn("Calificacion");
+                modelo.addColumn("Estado Limpieza");
+                modelo.addColumn("Estado Calificacion");
+                modelo.addColumn("Comentario");
+                Vector fila;
+
+                //PARA SABER CUANTOS REGISTROS EXISTEN
+                //int cantidadRegistros = objUsuarios.getCantidadRegistros();
+                //PARA CREAR REGISTROS POR REGISTROS
+                //DE LA TABLA DE NUESTRA BASE DE DATOS
+                //CREAMOS UNA NUEVA FILA PARA LA TABLA
+                fila = new Vector();
+                // AGREGAMOS LA MISMA FILA PARA LA TABLA
+                //A NUESTRO VECTOR
+
+                //fila.add(indice);
+                fila.add(listado[0].getIdProgramacion());
+                fila.add(listado[0].getTiempoTranscurrido());
+                fila.add(listado[0].getHorario());
+                fila.add(listado[0].getCalificacion());
+                fila.add(listado[0].getEstadoLimpieza());
+                fila.add(listado[0].getEstadoCalificacion());
+                fila.add(listado[0].getComentario());
+
+                //AGREGAMOS LA FILA COMPLETA DE DATOS
+                //AL CONTENEDOR QUE ESTAMOS DIBUJANDO
+                totalregistros++;
+                modelo.addRow(fila);
+                listaprogramciones.setModel(modelo);
+
+            } else {
+                mostrar("");
+            }
+
+        } catch (Exception e) {
+        }
+
+
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
+        // TODO add your handling code here:
+        if (txtidprogramacion.getText().length() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Debes asignar un ID");
+            txtidprogramacion.requestFocus();
+            return;
+        }
+        if (txthorarioprogra.getText().length() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Debes asignar un horario");
+            txthorarioprogra.requestFocus();
+            return;
+        }
+        if (txtcalificacion.getText().length() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Debes asignar una calificacion");
+            txtcalificacion.requestFocus();
+            return;
+        }
+
+        Programaciones func = new Programaciones();
+
+        String idprogramacion = txtidprogramacion.getText();
+        String tiempotranscurrido = txttiempotranscurrio.getText().toString().trim();
+        String horario = txthorarioprogra.getText().toString().trim();
+        String calificacion = txtcalificacion.getText().toString().trim();
+        String estadolimpieza = txtestadolimpieza.getText().toString().trim();
+        String estadocalificacion = txtestadocalificacion.getText().toString().trim();
+        String comentario = txtcomentarios.getText().toString().trim();
+
+        String url = "http://limpieza.azurewebsites.net/WS/API/programacion/actualizar.php";
+
+        try {
+            func.ActulizarDatos(url, idprogramacion, tiempotranscurrido, horario, calificacion, estadolimpieza, estadocalificacion, comentario);
+            JOptionPane.showMessageDialog(rootPane, "El progrma se actualizo correctamente");
+        } catch (Exception e) {
+        }
+        mostrar("");
+        limpiarcampos();
+
+
+    }//GEN-LAST:event_btnmodificarActionPerformed
+
+    private void btnnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuevoActionPerformed
+        // TODO add your handling code here:
+        if (txtidprogramacion.getText().length() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Debes asignar un ID");
+            txtidprogramacion.requestFocus();
+            return;
+        }
+        if (txthorarioprogra.getText().length() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Debes asignar un horario");
+            txthorarioprogra.requestFocus();
+            return;
+        }
+        if (txtcalificacion.getText().length() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Debes asignar una calificacion");
+            txtcalificacion.requestFocus();
+            return;
+        }
+
+        Programaciones func = new Programaciones();
+        String idprogramacion = txtidprogramacion.getText();
+        String tiempotranscurrido = txttiempotranscurrio.getText().toString().trim();
+        String horario = txthorarioprogra.getText().toString().trim();
+        String calificacion = txtcalificacion.getText().toString().trim();
+        String estadolimpieza = txtestadolimpieza.getText().toString().trim();
+        String estadocalificacion = txtestadocalificacion.getText().toString().trim();
+        String comentario = txtcomentarios.getText().toString().trim();
+
+        String url = "http://limpieza.azurewebsites.net/WS/API/programacion/insertar.php";
+
+        try {
+            func.InsertarUsuario(url, idprogramacion, tiempotranscurrido, horario, calificacion, estadolimpieza, estadocalificacion, comentario);
+            JOptionPane.showMessageDialog(rootPane, "El programa fue insertado correctamente");
+        } catch (Exception e) {
+        }
+        mostrar("");
+        limpiarcampos();
+
+    }//GEN-LAST:event_btnnuevoActionPerformed
+
+    private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
+        // TODO add your handling code here:
+        
+        
+        if (!txtidprogramacion.getText().equals("")) 
+        {
+            int confirmacion =  JOptionPane.showConfirmDialog(rootPane,"Esta seguro de eliminar el programa","Confirmar",2);
+            if (confirmacion==0)
+            {
+            Programaciones func = new Programaciones();
+
+        String idprogramacion = txtidprogramacion.getText();
+
+        String url = "http://limpieza.azurewebsites.net/WS/API/programacion/eliminar.php";
+
+        try {
+            func.EliminarDatos(url, idprogramacion);
+            JOptionPane.showMessageDialog(rootPane, "El progrma se elimino correctamente");
+        } catch (Exception e) {
+        }
+        mostrar("");
+        limpiarcampos();
+            
+            }
+//            
+            
+           
+        }
+        
+    }//GEN-LAST:event_btneliminarActionPerformed
+
+    private void btncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelarActionPerformed
+        // TODO add your handling code here:
+        limpiarcampos();
+    }//GEN-LAST:event_btncancelarActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void btnvistacalificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvistacalificacionActionPerformed
+        // TODO add your handling code here:
+
+        frmVistaCalificacion form = new frmVistaCalificacion();
+        form.toFront();
+        form.setVisible(true);
+    }//GEN-LAST:event_btnvistacalificacionActionPerformed
+
+    private void btnvistahorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvistahorarioActionPerformed
+        // TODO add your handling code here:
+
+        frmVistaHorarios2 form = new frmVistaHorarios2();
+        form.toFront();
+        form.setVisible(true);
+    }//GEN-LAST:event_btnvistahorarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -267,22 +782,38 @@ public class frmcrearprograma extends javax.swing.JInternalFrame{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btncancelar;
+    private javax.swing.JButton btneliminar;
+    private javax.swing.JButton btnmodificar;
+    private javax.swing.JButton btnnuevo;
+    private javax.swing.JButton btnvistacalificacion;
+    private javax.swing.JButton btnvistahorario;
     private javax.swing.JPanel fondo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblregistros;
+    public static javax.swing.JTable listaprogramciones;
+    public static javax.swing.JTextField txtcalificacion;
+    private javax.swing.JTextArea txtcomentarios;
+    private javax.swing.JTextField txtestadocalificacion;
+    private javax.swing.JTextField txtestadolimpieza;
+    public static javax.swing.JTextField txthorarioprogra;
+    private javax.swing.JTextField txtidpro;
+    private javax.swing.JTextField txtidprogramacion;
+    private javax.swing.JTextField txttiempotranscurrio;
     // End of variables declaration//GEN-END:variables
 }
