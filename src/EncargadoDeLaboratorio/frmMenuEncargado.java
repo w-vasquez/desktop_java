@@ -36,9 +36,10 @@ public class frmMenuEncargado extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         btncrearprogramacion = new rsbuttom.RSButtonMetro();
         btncerrrarsesion = new rsbuttom.RSButtonMetro();
-        btnmodificar = new rsbuttom.RSButtonMetro();
+        btncrearnotificaciones = new rsbuttom.RSButtonMetro();
         btnprogramaciones = new rsbuttom.RSButtonMetro();
         btncalificar = new rsbuttom.RSButtonMetro();
+        btncrearhorario = new rsbuttom.RSButtonMetro();
         escritorio = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -55,12 +56,12 @@ public class frmMenuEncargado extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Encargado de laboratorio");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, -1, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 10, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/home.png"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1420, 10, 60, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1810, 10, 60, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1500, 70));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1900, 70));
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -77,7 +78,7 @@ public class frmMenuEncargado extends javax.swing.JFrame {
                 btncrearprogramacionActionPerformed(evt);
             }
         });
-        jPanel3.add(btncrearprogramacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 250, 130));
+        jPanel3.add(btncrearprogramacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 250, 110));
 
         btncerrrarsesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar2.png"))); // NOI18N
         btncerrrarsesion.setText("CERRAR SESIÓN");
@@ -90,21 +91,21 @@ public class frmMenuEncargado extends javax.swing.JFrame {
                 btncerrrarsesionActionPerformed(evt);
             }
         });
-        jPanel3.add(btncerrrarsesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 550, 250, 130));
+        jPanel3.add(btncerrrarsesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 580, 250, 170));
 
-        btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/nuevo2.png"))); // NOI18N
-        btnmodificar.setText("MODIFICAR ");
-        btnmodificar.setColorHover(new java.awt.Color(156, 127, 0));
-        btnmodificar.setColorNormal(new java.awt.Color(38, 38, 38));
-        btnmodificar.setColorPressed(new java.awt.Color(224, 182, 0));
-        btnmodificar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnmodificar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnmodificar.addActionListener(new java.awt.event.ActionListener() {
+        btncrearnotificaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/noti.png"))); // NOI18N
+        btncrearnotificaciones.setText("CREAR NOTIFICACIONES");
+        btncrearnotificaciones.setColorHover(new java.awt.Color(156, 127, 0));
+        btncrearnotificaciones.setColorNormal(new java.awt.Color(38, 38, 38));
+        btncrearnotificaciones.setColorPressed(new java.awt.Color(224, 182, 0));
+        btncrearnotificaciones.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btncrearnotificaciones.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btncrearnotificaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnmodificarActionPerformed(evt);
+                btncrearnotificacionesActionPerformed(evt);
             }
         });
-        jPanel3.add(btnmodificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 250, 140));
+        jPanel3.add(btncrearnotificaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 250, 120));
 
         btnprogramaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Programaciones2.png"))); // NOI18N
         btnprogramaciones.setText("PROGRAMACIONES");
@@ -117,7 +118,7 @@ public class frmMenuEncargado extends javax.swing.JFrame {
                 btnprogramacionesActionPerformed(evt);
             }
         });
-        jPanel3.add(btnprogramaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 250, 140));
+        jPanel3.add(btnprogramaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 250, 120));
 
         btncalificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/calificar2.png"))); // NOI18N
         btncalificar.setText("CALIFICAR");
@@ -131,24 +132,38 @@ public class frmMenuEncargado extends javax.swing.JFrame {
                 btncalificarActionPerformed(evt);
             }
         });
-        jPanel3.add(btncalificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 250, 130));
+        jPanel3.add(btncalificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 250, 120));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 250, 680));
+        btncrearhorario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/horarios.png"))); // NOI18N
+        btncrearhorario.setText("CREAR HORARIOS");
+        btncrearhorario.setColorHover(new java.awt.Color(156, 127, 0));
+        btncrearhorario.setColorNormal(new java.awt.Color(38, 38, 38));
+        btncrearhorario.setColorPressed(new java.awt.Color(224, 182, 0));
+        btncrearhorario.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btncrearhorario.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btncrearhorario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncrearhorarioActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btncrearhorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 250, 100));
 
-        escritorio.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 250, 750));
+
+        escritorio.setBackground(new java.awt.Color(204, 255, 255));
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1250, Short.MAX_VALUE)
+            .addGap(0, 1650, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 670, Short.MAX_VALUE)
+            .addGap(0, 740, Short.MAX_VALUE)
         );
 
-        jPanel1.add(escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 1250, 670));
+        jPanel1.add(escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 1650, 740));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -158,7 +173,7 @@ public class frmMenuEncargado extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 812, Short.MAX_VALUE)
         );
 
         pack();
@@ -172,13 +187,13 @@ public class frmMenuEncargado extends javax.swing.JFrame {
         form.setVisible(true);
     }//GEN-LAST:event_btncrearprogramacionActionPerformed
 
-    private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
+    private void btncrearnotificacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncrearnotificacionesActionPerformed
         // TODO add your handling code here:
-        frmModificarhorario form=new frmModificarhorario();
+        frmCrearNotificacion form=new frmCrearNotificacion();
         escritorio.add(form);
         form.toFront();
         form.setVisible(true);
-    }//GEN-LAST:event_btnmodificarActionPerformed
+    }//GEN-LAST:event_btncrearnotificacionesActionPerformed
 
     private void btnprogramacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnprogramacionesActionPerformed
         // TODO add your handling code here:
@@ -204,6 +219,16 @@ public class frmMenuEncargado extends javax.swing.JFrame {
         
         this.dispose();
     }//GEN-LAST:event_btncerrrarsesionActionPerformed
+
+    private void btncrearhorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncrearhorarioActionPerformed
+        // TODO add your handling code here:
+        frmCrearhorarios form=new frmCrearhorarios();
+        escritorio.add(form);
+        form.toFront();
+        form.setVisible(true);
+        
+        
+    }//GEN-LAST:event_btncrearhorarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -244,8 +269,9 @@ public class frmMenuEncargado extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private rsbuttom.RSButtonMetro btncalificar;
     private rsbuttom.RSButtonMetro btncerrrarsesion;
+    private rsbuttom.RSButtonMetro btncrearhorario;
+    private rsbuttom.RSButtonMetro btncrearnotificaciones;
     private rsbuttom.RSButtonMetro btncrearprogramacion;
-    private rsbuttom.RSButtonMetro btnmodificar;
     private rsbuttom.RSButtonMetro btnprogramaciones;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JLabel jLabel1;

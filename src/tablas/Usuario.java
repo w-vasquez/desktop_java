@@ -1,10 +1,11 @@
 package tablas;
 
+
 import Datos.RESThttp;
 
 
 public class Usuario {
-    private String idUsuario;
+    private int idUsuario;
     private String idTipoUsuario;
     private String nombre;
     private String apellido ;
@@ -13,12 +14,14 @@ public class Usuario {
     private String estado ;
     private String telefono ;
     private String password;
+    
+    
 
-    public String getIdUsuario() {
+    public int getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(String idUsuario) {
+    public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
     }
 
@@ -96,6 +99,7 @@ public class Usuario {
         
         return elJson;
     }
+    
 
     public String mostrarDatos(String api)
     {

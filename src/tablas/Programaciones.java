@@ -162,4 +162,59 @@ public class Programaciones
         rest.sentenciaAccion(api,objeto);
     }
     
+    public String consultaCrediencial(String link) {
+        // link = getUrl()+getParametros();
+        RESThttp rest = new RESThttp();
+        String elJson = rest.sentenciaSelect(link);
+        //usuario.getLink().toString()
+
+        return elJson;
+    }
+    
+    public void ActulizarDatos(String api, String id, String tiempoTranscurrido, String horario, String calificacion, String estadoLimpieza, String estadoCalificacion, String comentario) throws JSONException, IOException {
+        RESThttp rest= new RESThttp();
+        JSONObject objeto = new JSONObject();
+
+        objeto.put("idProgramacion", id);
+        objeto.put("tiempoTranscurrido", tiempoTranscurrido);
+        objeto.put("horario", horario);
+        objeto.put("calificacion", calificacion);
+        objeto.put("estadoLimpieza", estadoLimpieza);
+        objeto.put("estadoCalificacion", estadoCalificacion);
+        objeto.put("comentario", comentario);
+        
+        rest.sentenciaAccion(api, objeto);
+        
+
+    }
+    
+    public void InsertarUsuario(String api, String id, String tiempoTranscurrido, String horario, String calificacion, String estadoLimpieza, String estadoCalificacion, String comentario) throws JSONException, IOException {
+        RESThttp rest= new RESThttp();
+        JSONObject objeto = new JSONObject();
+
+        objeto.put("idProgramacion", id);
+        objeto.put("tiempoTranscurrido", tiempoTranscurrido);
+        objeto.put("horario", horario);
+        objeto.put("calificacion", calificacion);
+        objeto.put("estadoLimpieza", estadoLimpieza);
+        objeto.put("estadoCalificacion", estadoCalificacion);
+        objeto.put("comentario", comentario);
+        
+        rest.sentenciaAccion(api, objeto);
+        
+
+    }
+    
+    public void EliminarDatos(String api, String id) throws JSONException, IOException {
+        RESThttp rest= new RESThttp();
+        JSONObject objeto = new JSONObject();
+
+        objeto.put("idProgramacion", id);
+        
+        
+        rest.sentenciaAccion(api, objeto);
+        
+
+    }
+    
 }

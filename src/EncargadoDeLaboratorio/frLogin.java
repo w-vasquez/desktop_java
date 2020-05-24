@@ -223,6 +223,7 @@ public class frLogin extends javax.swing.JFrame {
         //asignar valores a la variables de comparacion
         String correo = elUsuario[0].getCorreo();
         String clave = elUsuario[0].getPassword();
+        
         int nivel = Integer.parseInt(elUsuario[0].getIdTipoUsuario());
         System.out.println(correo+" "+clave);
         System.out.println(user+" "+pass);

@@ -5,17 +5,45 @@
  */
 package AdministradorGeneral;
 
+
+import com.google.gson.Gson;
+import java.sql.Statement;
+import java.util.Vector;
+
+import javax.swing.table.DefaultTableModel;
+import tablas.Usuario;
+
 /**
  *
  * @author CRUZ_2019
  */
-public class frmUsuario_Nuevo extends javax.swing.JInternalFrame{
+public class frmUsuario_Nuevo extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form frmUsuario_Nuevo
      */
+    Usuario objUsuarios;
+    
+    DefaultTableModel Contenedor;
+    Statement objEjecutaConsulta;
     public frmUsuario_Nuevo() {
         initComponents();
+        objUsuarios =new Usuario();
+        Contenedor= new DefaultTableModel();
+        
+        
+        Contenedor.addColumn("IdUusuario");
+        Contenedor.addColumn("IdTipo");
+        Contenedor.addColumn("Nombre");
+        Contenedor.addColumn("Apellido");
+        Contenedor.addColumn("Fecha Nacimiento");
+        Contenedor.addColumn("Correo");
+        Contenedor.addColumn("Estado");
+        Contenedor.addColumn("Telefono");
+        Contenedor.addColumn("Passwpord");
+        
+        listausuario.setModel(Contenedor);
+        
     }
 
     /**
@@ -57,7 +85,7 @@ public class frmUsuario_Nuevo extends javax.swing.JInternalFrame{
         btnsalir = new javax.swing.JButton();
         lblregistros = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablausuarios = new javax.swing.JTable();
+        listausuario = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
@@ -293,7 +321,7 @@ public class frmUsuario_Nuevo extends javax.swing.JInternalFrame{
 
         lblregistros.setText("Registros:");
 
-        tablausuarios.setModel(new javax.swing.table.DefaultTableModel(
+        listausuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -304,12 +332,12 @@ public class frmUsuario_Nuevo extends javax.swing.JInternalFrame{
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tablausuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+        listausuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablausuariosMouseClicked(evt);
+                listausuarioMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tablausuarios);
+        jScrollPane1.setViewportView(listausuario);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -380,7 +408,7 @@ public class frmUsuario_Nuevo extends javax.swing.JInternalFrame{
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 512, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
@@ -423,12 +451,12 @@ public class frmUsuario_Nuevo extends javax.swing.JInternalFrame{
     private void btnnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuevoActionPerformed
         // TODO add your handling code here:
 
-       
+
     }//GEN-LAST:event_btnnuevoActionPerformed
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
         // TODO add your handling code here:
-       
+
 
     }//GEN-LAST:event_btnguardarActionPerformed
 
@@ -452,7 +480,8 @@ public class frmUsuario_Nuevo extends javax.swing.JInternalFrame{
     }//GEN-LAST:event_txtbuscarActionPerformed
 
     private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
-        // TODO add your handling code here:
+        
+
     }//GEN-LAST:event_btnbuscarActionPerformed
 
     private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
@@ -464,10 +493,10 @@ public class frmUsuario_Nuevo extends javax.swing.JInternalFrame{
         this.dispose();
     }//GEN-LAST:event_btnsalirActionPerformed
 
-    private void tablausuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablausuariosMouseClicked
+    private void listausuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listausuarioMouseClicked
         // TODO add your handling code here:
 
-    }//GEN-LAST:event_tablausuariosMouseClicked
+    }//GEN-LAST:event_listausuarioMouseClicked
 
     /**
      * @param args the command line arguments
@@ -529,7 +558,7 @@ public class frmUsuario_Nuevo extends javax.swing.JInternalFrame{
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblregistros;
-    private javax.swing.JTable tablausuarios;
+    private javax.swing.JTable listausuario;
     private javax.swing.JTextField txtapellido;
     private javax.swing.JTextField txtbuscar;
     private javax.swing.JTextField txtcontraseña;
