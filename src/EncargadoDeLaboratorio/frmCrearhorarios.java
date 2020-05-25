@@ -50,6 +50,25 @@ public class frmCrearhorarios extends javax.swing.JInternalFrame {
 
     }
 
+    public Boolean Validar_CampoHora(String Hora) {
+        boolean b;
+        char[] a = Hora.toString().toCharArray();
+        String[] c = Hora.split(":");
+
+        if ((a[0] == ' ') || (a[1] == ' ') || (a[2] == ' ') || (a[3] == ' ') || (a[4] == ' ') || (getInteger(c[0]) > 24) || (getInteger(c[1]) > 59)) {
+            b = false;
+        } else {
+            b = true;
+        }
+        return b;
+    }
+
+    public int getInteger(String valor) {
+        int integer = Integer.parseInt(valor);
+        return integer;
+
+    }
+
     void limpiarcampos() {
         txtidhorario.setText("");
         txtnombrehorario.setText("");
@@ -183,8 +202,6 @@ public class frmCrearhorarios extends javax.swing.JInternalFrame {
         txtlaboratorio = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         txtnotificacion = new javax.swing.JTextField();
-        txthorafinal = new javax.swing.JTextField();
-        txthorainicio = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         ckblunes = new javax.swing.JCheckBox();
         ckbmartes = new javax.swing.JCheckBox();
@@ -201,6 +218,8 @@ public class frmCrearhorarios extends javax.swing.JInternalFrame {
         dtbfechacreacion = new com.toedter.calendar.JDateChooser();
         btnvistalaboratorio = new javax.swing.JButton();
         txtnombrelabo = new javax.swing.JTextField();
+        txthorainicio = new javax.swing.JFormattedTextField();
+        txthorafinal = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -389,6 +408,18 @@ public class frmCrearhorarios extends javax.swing.JInternalFrame {
 
         btnvistalaboratorio.setText("...");
 
+        try {
+            txthorainicio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            txthorafinal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -440,14 +471,16 @@ public class frmCrearhorarios extends javax.swing.JInternalFrame {
                                     .addComponent(dtbfechafin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txthorainicio)
-                                    .addComponent(txthorafinal)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(txtnotificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                                        .addComponent(btnvistanotificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(txtnombrelabo))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(txtnotificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                                            .addComponent(btnvistanotificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtnombrelabo))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(txthorafinal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                                        .addComponent(txthorainicio, javax.swing.GroupLayout.Alignment.LEADING)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnvistalaboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -487,15 +520,15 @@ public class frmCrearhorarios extends javax.swing.JInternalFrame {
                             .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txthorainicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel16)))
+                            .addComponent(jLabel16)
+                            .addComponent(txthorainicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txthorafinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel17))
+                    .addComponent(jLabel17)
+                    .addComponent(txthorafinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -625,7 +658,7 @@ public class frmCrearhorarios extends javax.swing.JInternalFrame {
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
+                .addContainerGap(25, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -654,6 +687,7 @@ public class frmCrearhorarios extends javax.swing.JInternalFrame {
 
     private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
         // TODO add your handling code here:
+         
         if (txtidhorario.getText().length() == 0) {
             JOptionPane.showMessageDialog(rootPane, "Debes asignar un ID");
             txtidhorario.requestFocus();
@@ -728,7 +762,7 @@ public class frmCrearhorarios extends javax.swing.JInternalFrame {
         String fechaFin = a + "-" + m + "-" + d;
 
         String horaincio = txthorainicio.getText().toString().trim();
-        String horafin = txthorainicio.getText().toString().trim();
+        String horafin = txthorafinal.getText().toString().trim();
         String nombre = txtnombrehorario.getText().toString().trim();
         String ordenanza = txtidordenanza.getText().toString().trim();
 
@@ -760,6 +794,7 @@ public class frmCrearhorarios extends javax.swing.JInternalFrame {
     private void btnnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuevoActionPerformed
         // TODO add your handling code here:
         Horarios func = new Horarios();
+        
         if (txtidhorario.getText().length() == 0) {
             JOptionPane.showMessageDialog(rootPane, "Debes asignar un ID");
             txtidhorario.requestFocus();
@@ -845,14 +880,12 @@ public class frmCrearhorarios extends javax.swing.JInternalFrame {
         String url = "http://limpieza.azurewebsites.net/WS/API/horario/insertar.php";
 
         try {
-            
-                func.InsertarUsuario(url, idhorario, lunes, martes, miercoles, jueves, viernes, sabado, domingo, fechaInicio, fechaFin, horaincio, horafin, nombre, ordenanza, fechaCreacion, laboratorio, notificacion);
+
+            func.InsertarUsuario(url, idhorario, lunes, martes, miercoles, jueves, viernes, sabado, domingo, fechaInicio, fechaFin, horaincio, horafin, nombre, ordenanza, fechaCreacion, laboratorio, notificacion);
 
             JOptionPane.showMessageDialog(rootPane, "El horario fue insertado correctamente");
             mostrar("");
-            
-            
-            
+
         } catch (Exception e) {
         }
 
@@ -1023,24 +1056,27 @@ public class frmCrearhorarios extends javax.swing.JInternalFrame {
 
     private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
         // TODO add your handling code here:
-        if (!txtidhorario.getText().equals("")) 
-        {
-            int confirmacion =  JOptionPane.showConfirmDialog(rootPane,"Esta seguro de eliminar el horario","Confirmar",2);
-            if (confirmacion==0){{Horarios func = new Horarios();
+        if (!txtidhorario.getText().equals("")) {
+            int confirmacion = JOptionPane.showConfirmDialog(rootPane, "Esta seguro de eliminar el horario", "Confirmar", 2);
+            if (confirmacion == 0) {
+                {
+                    Horarios func = new Horarios();
 
-        String idhorario = txtidhorario.getText().toString().trim();
+                    String idhorario = txtidhorario.getText().toString().trim();
 
-        String url = "http://limpieza.azurewebsites.net/WS/API/horario/eliminar.php";
+                    String url = "http://limpieza.azurewebsites.net/WS/API/horario/eliminar.php";
 
-        try {
-            func.EliminarDatos(url, idhorario);
-            JOptionPane.showMessageDialog(rootPane, "El horario fue eliminado correctamente");
-        } catch (Exception e) {
+                    try {
+                        func.EliminarDatos(url, idhorario);
+                        JOptionPane.showMessageDialog(rootPane, "El horario fue eliminado correctamente");
+                    } catch (Exception e) {
+                    }
+                    mostrar("");
+                    limpiarcampos();
+                }
+            }
+
         }
-        mostrar("");
-        limpiarcampos();}}
-            
-        }  
     }//GEN-LAST:event_btneliminarActionPerformed
 
     private void btnvistaordenanzasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvistaordenanzasActionPerformed
@@ -1134,8 +1170,8 @@ public class frmCrearhorarios extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblregistros;
     public static javax.swing.JTable lstregistros;
-    private javax.swing.JTextField txthorafinal;
-    private javax.swing.JTextField txthorainicio;
+    private javax.swing.JFormattedTextField txthorafinal;
+    private javax.swing.JFormattedTextField txthorainicio;
     private javax.swing.JTextField txtidhorario;
     private javax.swing.JTextField txtidhorariobuscar;
     public static javax.swing.JTextField txtidordenanza;
