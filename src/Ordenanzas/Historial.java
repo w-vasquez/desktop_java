@@ -15,9 +15,14 @@ public class Historial extends javax.swing.JFrame {
     /**
      * Creates new form Historial
      */
-    public Historial() {
+    public Historial() 
+    {
         initComponents();
         this.setLocationRelativeTo(null);
+    }
+    public void llenarTabla()
+    {
+        
     }
 
     /**
