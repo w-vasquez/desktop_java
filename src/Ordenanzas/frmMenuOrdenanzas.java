@@ -170,7 +170,7 @@ public class frmMenuOrdenanzas extends javax.swing.JFrame {
 
     private void btnhistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhistorialActionPerformed
         // TODO add your handling code here:
-          Historial form=new Historial(idUsuario);
+        Historial form=new Historial(idUsuario);
         escritorio.add(form);
         form.toFront();
         form.setVisible(true);

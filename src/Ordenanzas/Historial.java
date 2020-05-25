@@ -185,6 +185,21 @@ public class Historial extends javax.swing.JInternalFrame {
 
     private void lstUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstUsuariosMouseClicked
         // TODO add your handling code here:
+        int seleccionarDatos=lstUsuarios.rowAtPoint(evt.getPoint());
+        String idHorario=String.valueOf(lstUsuarios.getValueAt(seleccionarDatos, 0));
+        String idOrdenanza=String.valueOf(lstUsuarios.getValueAt(seleccionarDatos, 4));
+        String fechIni=String.valueOf(lstUsuarios.getValueAt(seleccionarDatos, 6));
+        String horaIni=String.valueOf(lstUsuarios.getValueAt(seleccionarDatos, 8));
+        String nomLab=String.valueOf(lstUsuarios.getValueAt(seleccionarDatos, 11));
+        
+        Programaciones obj=new Programaciones();
+        obj.idHorario=idHorario;
+        obj.hora=horaIni;
+        obj.dia=fechIni;
+        obj.idOrde=idOrdenanza;
+        obj.lugar=nomLab;
+ 
+        obj.setVisible(true);
     }//GEN-LAST:event_lstUsuariosMouseClicked
 
     /**

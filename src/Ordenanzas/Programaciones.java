@@ -5,6 +5,14 @@
  */
 package Ordenanzas;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import org.json.JSONException;
+import tablas.Prog;
+
+
 /**
  *
  * @author 50372
@@ -21,9 +29,13 @@ public class Programaciones extends javax.swing.JInternalFrame {
     /**
      * Creates new form Programaciones
      */
+    String idHorario,idOrde,dia,hora,lugar;
     public Programaciones() {
         initComponents();
-        
+        txtOrdenanza.setText(idOrde);
+        txtDia.setText(dia);
+        txtLugar.setText(lugar);
+        txtHora.setText(hora);
     }
 
     Programaciones(frmMenuOrdenanzas aThis, boolean b) {
@@ -50,12 +62,15 @@ public class Programaciones extends javax.swing.JInternalFrame {
         txtDia = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         txtHora = new javax.swing.JTextField();
+        txtIDProgra = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         btnIniciar = new javax.swing.JButton();
         lb1 = new javax.swing.JLabel();
         lb2 = new javax.swing.JLabel();
         btnBorrar = new javax.swing.JButton();
         btnPausar = new javax.swing.JButton();
+        btnFinalizar = new javax.swing.JButton();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -68,7 +83,7 @@ public class Programaciones extends javax.swing.JInternalFrame {
         jLabel1.setText("Programaciones");
 
         jPanel1.setBackground(new java.awt.Color(224, 182, 0));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalles ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalles ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
 
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Ordenanza: ");
@@ -106,33 +121,48 @@ public class Programaciones extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("ID Programacion:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel16)
-                    .addComponent(jLabel17)
-                    .addComponent(jLabel14))
-                .addGap(79, 79, 79)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txtHora, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
-                        .addComponent(txtDia, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtOrdenanza, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(txtLugar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel16)
+                        .addComponent(jLabel17)
+                        .addComponent(jLabel14))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel8))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2)))
+                .addGap(69, 69, 69)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtHora, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                            .addComponent(txtDia, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtOrdenanza, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addComponent(txtLugar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIDProgra, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
+                .addGap(26, 26, 26)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtIDProgra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(txtOrdenanza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -144,7 +174,7 @@ public class Programaciones extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(txtLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -177,6 +207,14 @@ public class Programaciones extends javax.swing.JInternalFrame {
             }
         });
 
+        btnFinalizar.setBackground(new java.awt.Color(51, 255, 51));
+        btnFinalizar.setText("FINALIZAR");
+        btnFinalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinalizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -185,16 +223,21 @@ public class Programaciones extends javax.swing.JInternalFrame {
                 .addGap(82, 82, 82)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(lb1)
+                        .addGap(18, 18, 18)
+                        .addComponent(lb2))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(btnIniciar)
                         .addGap(68, 68, 68)
                         .addComponent(btnPausar)
-                        .addGap(74, 74, 74)
-                        .addComponent(btnBorrar))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(lb1)
-                        .addGap(18, 18, 18)
-                        .addComponent(lb2)))
-                .addContainerGap(69, Short.MAX_VALUE))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(74, 74, 74)
+                                .addComponent(btnBorrar))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(52, 52, 52)
+                                .addComponent(btnFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,7 +251,9 @@ public class Programaciones extends javax.swing.JInternalFrame {
                     .addComponent(btnIniciar)
                     .addComponent(btnBorrar)
                     .addComponent(btnPausar))
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -225,7 +270,7 @@ public class Programaciones extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(jLabel1)))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,7 +281,7 @@ public class Programaciones extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -316,6 +361,46 @@ public class Programaciones extends javax.swing.JInternalFrame {
         estado = false;
     }//GEN-LAST:event_btnPausarActionPerformed
 
+    private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarActionPerformed
+        // TODO add your handling code here:
+        estado=false;
+        /*idProgramacion
+        tiempoTranscurrido
+        horario
+        calificacion
+        estadoLimpieza
+        estadoCalificacion
+        comentario*/
+        Prog pro=new Prog();
+        String tiempoTranscurrido=hor + " : " +min+ " : " +seg+ " : "+miliseg;
+        String idProg=txtIDProgra.getText();
+        String C="Pendiente";
+        String estadoC="Pendiente";
+        String estadoL="Finalizado";
+        String comenta="pendiente";
+        String api="https://limpieza.azurewebsites.net/WS/API/programacion/insertar.php";
+        
+        if(!idProg.equals("")&&!tiempoTranscurrido.equals(""))
+        {
+                try 
+                {
+                    pro.InsertarDatos(api, idProg, tiempoTranscurrido, idHorario, C, estadoL, estadoC, comenta);
+                    
+                    JOptionPane.showMessageDialog(rootPane, "Programacion Finalizada");
+                } catch (JSONException ex) { 
+                Logger.getLogger(Programaciones.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Programaciones.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+                  
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(rootPane, "Tiene que llenar todos los campos");
+        }
+        
+    }//GEN-LAST:event_btnFinalizarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -353,12 +438,14 @@ public class Programaciones extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBorrar;
+    private javax.swing.JButton btnFinalizar;
     private javax.swing.JButton btnIniciar;
     private javax.swing.JButton btnPausar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
@@ -367,6 +454,7 @@ public class Programaciones extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lb2;
     private javax.swing.JTextField txtDia;
     private javax.swing.JTextField txtHora;
+    private javax.swing.JTextField txtIDProgra;
     private javax.swing.JTextField txtLugar;
     private javax.swing.JTextField txtOrdenanza;
     // End of variables declaration//GEN-END:variables

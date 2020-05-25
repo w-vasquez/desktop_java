@@ -47,7 +47,7 @@
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="47" max="32767" attributes="0"/>
+              <EmptySpace pref="34" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -61,7 +61,7 @@
                   <Component id="jPanel4" max="32767" attributes="0"/>
                   <Component id="jPanel1" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="23" max="32767" attributes="0"/>
+              <EmptySpace pref="24" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -93,20 +93,32 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jLabel8" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel16" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel17" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="79" pref="79" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="txtHora" alignment="0" pref="187" max="32767" attributes="0"/>
-                          <Component id="txtDia" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtOrdenanza" alignment="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jLabel16" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel17" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="txtLugar" alignment="1" min="-2" pref="187" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="txtHora" alignment="0" pref="187" max="32767" attributes="0"/>
+                              <Component id="txtDia" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtOrdenanza" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="txtLugar" alignment="1" min="-2" pref="187" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="txtIDProgra" min="-2" pref="170" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="39" max="32767" attributes="0"/>
               </Group>
@@ -115,12 +127,17 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txtIDProgra" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtOrdenanza" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtDia" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -135,7 +152,7 @@
                       <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtLugar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="148" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -193,6 +210,16 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtHoraActionPerformed"/>
           </Events>
         </Component>
+        <Component class="javax.swing.JTextField" name="txtIDProgra">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel2">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="ID Programacion:"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanel4">
@@ -214,19 +241,27 @@
                   <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="btnIniciar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-                          <Component id="btnPausar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                          <Component id="btnBorrar" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
                           <Component id="lb1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="lb2" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="btnIniciar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                          <Component id="btnPausar" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                                  <Component id="btnBorrar" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                                  <Component id="btnFinalizar" min="-2" pref="95" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
                   </Group>
-                  <EmptySpace pref="69" max="32767" attributes="0"/>
+                  <EmptySpace pref="59" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -244,7 +279,9 @@
                       <Component id="btnBorrar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnPausar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="103" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="btnFinalizar" min="-2" pref="35" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -288,6 +325,17 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPausarActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnFinalizar">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="ff" red="33" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="FINALIZAR"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFinalizarActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
