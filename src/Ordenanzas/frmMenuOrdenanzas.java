@@ -14,9 +14,19 @@ public class frmMenuOrdenanzas extends javax.swing.JFrame {
     /**
      * Creates new form frmMenuOrdenanzas
      */
-    public frmMenuOrdenanzas() {
+    String idUsuario;
+    public frmMenuOrdenanzas(String IdUsuario) {
         initComponents();
         this.setLocationRelativeTo(this);
+        this.idUsuario=idUsuario;
+        System.out.println(this.idUsuario);
+        
+        Historial obj=new Historial();
+        obj.idOrdenanza=this.idUsuario;
+    }
+
+    private frmMenuOrdenanzas() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**

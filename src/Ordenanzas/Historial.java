@@ -5,7 +5,10 @@
  */
 package Ordenanzas;
 
+import com.google.gson.Gson;
+import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
+import tablas.mostrarHorarios;
 
 /**
  *
@@ -17,6 +20,7 @@ public class Historial extends javax.swing.JFrame {
     /**
      * Creates new form Historial
      */
+    String idOrdenanza;
     DefaultTableModel contenedor;
     public Historial() 
     {
@@ -46,11 +50,48 @@ public class Historial extends javax.swing.JFrame {
    
         
         lstUsuarios.setModel(contenedor);
+        llenarTabla();
         
     }
     public void llenarTabla()
     {
+        mostrarHorarios obj=new mostrarHorarios();
+        Vector fila;
+        Gson gson=new Gson();
+
+        String api="https://limpieza.azurewebsites.net/ws/API/vistaHorario/mostrarOrdenanzaLaboratorio.php?";
+        String ordenanza="idOrdenanza="+idOrdenanza;
+
+        String elJson=obj.consultaCrediencial(api);
         
+        //convertimos a un obj de java
+        mostrarHorarios[] horarios=gson.fromJson(elJson, mostrarHorarios[].class);
+        
+        for(mostrarHorarios registros: horarios)
+        {
+            fila=new Vector();
+            fila.add(registros.getIdHorario());
+            fila.add(registros.getNomHorario());
+            fila.add(registros.getNomUsuario());
+            fila.add(registros.getApeUsuario());
+            fila.add(registros.getIdOrdenanza());
+            fila.add(registros.getfCrea());
+            fila.add(registros.getfIni());
+            fila.add(registros.getfFin());
+            fila.add(registros.gethIni());
+            fila.add(registros.gethFin());
+            fila.add(registros.getIdLaboratorio());
+            fila.add(registros.getNomLab());
+            fila.add(registros.getLunes());
+            fila.add(registros.getMartes());
+            fila.add(registros.getMiercoles());
+            fila.add(registros.getJueves());
+            fila.add(registros.getViernes());
+            fila.add(registros.getSabado());
+            fila.add(registros.getDomingo());
+            fila.add(registros.getNotificacion());
+            contenedor.addRow(fila);
+        }
     }
 
     /**
@@ -157,13 +198,19 @@ public class Historial extends javax.swing.JFrame {
         String dia=String.valueOf(lstUsuarios.getValueAt(seleccionarDatos, 6));
         String HoraInicio=String.valueOf(lstUsuarios.getValueAt(seleccionarDatos, 8));
         String lugar=String.valueOf(lstUsuarios.getValueAt(seleccionarDatos, 11));
+        
+        Programaciones obj=new Programaciones();
+        obj.idordenanza=idOrdenanza;
+        obj.dia=dia;
+        obj.hora=HoraInicio;
+        obj.lugar=lugar;
     }//GEN-LAST:event_lstUsuariosMouseClicked
 
     private void btnbuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscar1ActionPerformed
         // TODO add your handling code here:
-         frmMenuOrdenanzas pro=new  frmMenuOrdenanzas();
+        /* frmMenuOrdenanzas pro=new  frmMenuOrdenanzas();
         pro.setVisible(true);
-        this.setVisible(false);
+        this.setVisible(false);*/
     }//GEN-LAST:event_btnbuscar1ActionPerformed
 
     /**

@@ -16,15 +16,26 @@ public class Programaciones extends javax.swing.JFrame {
     static int hor = 0;
    static boolean estado = true;
     
-            
+           
 
     /**
      * Creates new form Programaciones
      */
+    String idordenanza;
+    String dia;
+    String hora;
+    String lugar;
+    
     public Programaciones() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
+        txtOrdenanza.setText(idordenanza);
+        txtDia.setText(dia);
+        txtHora.setText(hora);
+        txtLugar.setText(lugar);
     }
+    
 
     Programaciones(frmMenuOrdenanzas aThis, boolean b) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

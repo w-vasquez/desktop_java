@@ -226,6 +226,7 @@ public class frLogin extends javax.swing.JFrame {
         Usuario[] elUsuario = gson.fromJson(elJson, Usuario[].class);
         
         //asignar valores a la variables de comparacion
+        String idUsuario=String.valueOf(elUsuario[0].getIdUsuario());
         String correo = elUsuario[0].getCorreo();
         String clave = elUsuario[0].getPassword();
         
@@ -248,7 +249,7 @@ public class frLogin extends javax.swing.JFrame {
             this.dispose();
         }else if(user.equals(correo) && pass.equals(clave) && (nivel == 3)){
             JOptionPane.showMessageDialog(null, "Bienvenido al Sistema Ordenanza");
-            frmMenuOrdenanzas pc = new frmMenuOrdenanzas();
+            frmMenuOrdenanzas pc = new frmMenuOrdenanzas(idUsuario);
             pc.setVisible(true);
             this.dispose();
         }else{
