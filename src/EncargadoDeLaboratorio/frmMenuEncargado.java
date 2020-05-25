@@ -14,9 +14,15 @@ public class frmMenuEncargado extends javax.swing.JFrame {
     /**
      * Creates new form frmMenu
      */
-    public frmMenuEncargado() {
+    int idUsuario = 0;
+    public frmMenuEncargado(int idUsuario) {
         initComponents();
         this.setLocationRelativeTo(this);
+        this.idUsuario = idUsuario;
+    }
+
+    private frmMenuEncargado() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**

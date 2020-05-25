@@ -5,6 +5,11 @@
  */
 package Ordenanzas;
 
+import com.google.gson.Gson;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
+import tablas.mostrarHorarios;
+
 /**
  *
  * @author 50372
@@ -15,9 +20,83 @@ public class Historial extends javax.swing.JInternalFrame {
     /**
      * Creates new form Historial
      */
-    public Historial() {
+    int idUsuario = 0;
+    DefaultTableModel contenedor;
+    public Historial(int idUsuario) {
         initComponents();
+        this.idUsuario = idUsuario;
         
+        
+        contenedor=new DefaultTableModel();
+        contenedor.addColumn("ID Horario");
+        contenedor.addColumn("Nom Horario");
+        contenedor.addColumn("Nom Usuario");
+        contenedor.addColumn("Apell Usuario");
+        contenedor.addColumn("ID Hordenanza");
+        contenedor.addColumn("Fech Creacion");
+        contenedor.addColumn("Fech Inicio");
+        contenedor.addColumn("Fech FIN");
+        contenedor.addColumn("Hora Inicio");
+        contenedor.addColumn("Hora Fin");
+        contenedor.addColumn("ID Lab");
+        contenedor.addColumn("Nom Lab");
+        contenedor.addColumn("Lunes");
+        contenedor.addColumn("Martes");
+        contenedor.addColumn("Miercoles");
+        contenedor.addColumn("Jueves");
+        contenedor.addColumn("Viernes");
+        contenedor.addColumn("Sabado");
+        contenedor.addColumn("Domingo");
+        contenedor.addColumn("Notificacion");
+   
+        
+        lstUsuarios.setModel(contenedor);
+        llenarTabla();
+    }
+    
+    public void llenarTabla()
+    {
+        mostrarHorarios obj=new mostrarHorarios();
+        Vector fila;
+        Gson gson=new Gson();
+
+        String api="https://limpieza.azurewebsites.net/ws/API/vistaHorario/mostrarOrdenanzaLaboratorio.php?";
+        //String ordenanza="idOrdenanza="+idOrdenanza;
+
+        String elJson=obj.consultaCrediencial(api);
+        
+        //convertimos a un obj de java
+        mostrarHorarios[] horarios=gson.fromJson(elJson, mostrarHorarios[].class);
+        
+        for(mostrarHorarios registros: horarios)
+        {
+            fila=new Vector();
+            fila.add(registros.getIdHorario());
+            fila.add(registros.getNomHorario());
+            fila.add(registros.getNomUsuario());
+            fila.add(registros.getApeUsuario());
+            fila.add(registros.getIdOrdenanza());
+            fila.add(registros.getfCrea());
+            fila.add(registros.getfIni());
+            fila.add(registros.getfFin());
+            fila.add(registros.gethIni());
+            fila.add(registros.gethFin());
+            fila.add(registros.getIdLaboratorio());
+            fila.add(registros.getNomLab());
+            fila.add(registros.getLunes());
+            fila.add(registros.getMartes());
+            fila.add(registros.getMiercoles());
+            fila.add(registros.getJueves());
+            fila.add(registros.getViernes());
+            fila.add(registros.getSabado());
+            fila.add(registros.getDomingo());
+            fila.add(registros.getNotificacion());
+            contenedor.addRow(fila);
+        }
+    }
+
+    private Historial() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -42,7 +121,7 @@ public class Historial extends javax.swing.JInternalFrame {
         jLabel1.setText("Historial");
 
         jPanel1.setBackground(new java.awt.Color(5, 134, 154));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Horarios Programados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Horarios Programados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 19), new java.awt.Color(255, 255, 255))); // NOI18N
 
         lstUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

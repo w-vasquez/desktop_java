@@ -16,9 +16,17 @@ public class frmMenuOrdenanzas extends javax.swing.JFrame {
     /**
      * Creates new form frmMenuOrdenanzas
      */
-    public frmMenuOrdenanzas() {
+    
+    int idUsuario = 0;
+    public frmMenuOrdenanzas(int idUsuario) {
         initComponents();
         this.setLocationRelativeTo(this);
+        this.idUsuario = idUsuario;
+        
+    }
+
+    private frmMenuOrdenanzas() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -153,7 +161,7 @@ public class frmMenuOrdenanzas extends javax.swing.JFrame {
 
     private void btnprogramacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnprogramacionesActionPerformed
         // TODO add your handling code here:
-          Programaciones form=new Programaciones();
+          Historial form=new Historial(idUsuario);
         escritorio.add(form);
         form.toFront();
         form.setVisible(true);
@@ -162,7 +170,7 @@ public class frmMenuOrdenanzas extends javax.swing.JFrame {
 
     private void btnhistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhistorialActionPerformed
         // TODO add your handling code here:
-          Historial form=new Historial();
+          Historial form=new Historial(idUsuario);
         escritorio.add(form);
         form.toFront();
         form.setVisible(true);
