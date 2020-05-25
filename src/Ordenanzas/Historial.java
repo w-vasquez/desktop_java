@@ -5,6 +5,8 @@
  */
 package Ordenanzas;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author 50372
@@ -15,10 +17,36 @@ public class Historial extends javax.swing.JFrame {
     /**
      * Creates new form Historial
      */
+    DefaultTableModel contenedor;
     public Historial() 
     {
         initComponents();
         this.setLocationRelativeTo(null);
+        contenedor=new DefaultTableModel();
+        contenedor.addColumn("ID Horario");
+        contenedor.addColumn("Nom Horario");
+        contenedor.addColumn("Nom Usuario");
+        contenedor.addColumn("Apell Usuario");
+        contenedor.addColumn("ID Hordenanza");
+        contenedor.addColumn("Fech Creacion");
+        contenedor.addColumn("Fech Inicio");
+        contenedor.addColumn("Fech FIN");
+        contenedor.addColumn("Hora Inicio");
+        contenedor.addColumn("Hora Fin");
+        contenedor.addColumn("ID Lab");
+        contenedor.addColumn("Nom Lab");
+        contenedor.addColumn("Lunes");
+        contenedor.addColumn("Martes");
+        contenedor.addColumn("Miercoles");
+        contenedor.addColumn("Jueves");
+        contenedor.addColumn("Viernes");
+        contenedor.addColumn("Sabado");
+        contenedor.addColumn("Domingo");
+        contenedor.addColumn("Notificacion");
+   
+        
+        lstUsuarios.setModel(contenedor);
+        
     }
     public void llenarTabla()
     {
@@ -124,6 +152,11 @@ public class Historial extends javax.swing.JFrame {
 
     private void lstUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstUsuariosMouseClicked
         // TODO add your handling code here:
+        int seleccionarDatos=lstUsuarios.rowAtPoint(evt.getPoint());
+        String idOrdenanza=String.valueOf(lstUsuarios.getValueAt(seleccionarDatos,4 ));
+        String dia=String.valueOf(lstUsuarios.getValueAt(seleccionarDatos, 6));
+        String HoraInicio=String.valueOf(lstUsuarios.getValueAt(seleccionarDatos, 8));
+        String lugar=String.valueOf(lstUsuarios.getValueAt(seleccionarDatos, 11));
     }//GEN-LAST:event_lstUsuariosMouseClicked
 
     private void btnbuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscar1ActionPerformed
