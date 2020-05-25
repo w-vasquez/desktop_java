@@ -79,7 +79,35 @@ public class Calificar {
         JSONObject objeto = new JSONObject(); 
         objeto.put("idCalificacion",idCalificacion);
         objeto.put("calificacion",calificacion);
-        objeto.put("comentario", comentario);
+        objeto.put("comentarios", comentario);
+        
+        obj.sentenciaAccion(api, objeto);
+        
+        
+        
+    }
+    
+      public void actualizarDatos(String api, String idCalificacion, String calificacion, String comentario) throws JSONException, IOException{
+        RESThttp obj = new RESThttp();
+        
+        
+        JSONObject objeto = new JSONObject(); 
+        objeto.put("idCalificacion",idCalificacion);
+        objeto.put("calificacion",calificacion);
+        objeto.put("comentarios", comentario);
+        
+        obj.sentenciaAccion(api, objeto);
+        
+        
+        
+    }
+        public void eliminarDatos(String api, String idCalificacion) throws JSONException, IOException{
+        RESThttp obj = new RESThttp();
+        
+        
+        JSONObject objeto = new JSONObject(); 
+        objeto.put("idCalificacion",idCalificacion);
+        
         
         obj.sentenciaAccion(api, objeto);
         
