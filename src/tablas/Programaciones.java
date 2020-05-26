@@ -205,12 +205,44 @@ public class Programaciones
 
     }
     
+    public String toString(){
+        return horario +" \t -  "+ estadoLimpieza;
+    }
+    
     public void EliminarDatos(String api, String id) throws JSONException, IOException {
         RESThttp rest= new RESThttp();
         JSONObject objeto = new JSONObject();
 
         objeto.put("idProgramacion", id);
         
+        
+        rest.sentenciaAccion(api, objeto);
+        
+
+    }
+    Prov objConexion ;
+    public String getProgramaciones(Programaciones dato, int tipo){
+        objConexion = new Prov();
+        String consultaSql = "";
+        
+        switch(tipo){
+            case 1:
+                consultaSql = "select * from programacion where horario = "+dato.getHorario()+" and estadoLimpieza = 'Activo'";
+                System.out.println(consultaSql);
+                break;
+        }
+        String elJson = objConexion.getSelectProgramacion(consultaSql,tipo);
+        
+        return elJson;
+    }
+    
+    public void actualizarTiempoTranscurrido(Programaciones objProgramacion, String api) throws JSONException, IOException {
+        RESThttp rest= new RESThttp();
+        JSONObject objeto = new JSONObject();
+
+        objeto.put("idProgramacion", objProgramacion.getIdProgramacion());
+        objeto.put("tiempoTranscurrido", objProgramacion.getTiempoTranscurrido());
+
         
         rest.sentenciaAccion(api, objeto);
         

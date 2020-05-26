@@ -11,13 +11,14 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.json.JSONException;
 import tablas.Prog;
+import tablas.mostrarHorarios;
 
 
 /**
  *
  * @author 50372
  */
-public class Programaciones extends javax.swing.JInternalFrame {
+public class FrmProgramaciones extends javax.swing.JInternalFrame {
     static int miliseg = 0;
     static int seg = 0;
     static int min = 0;
@@ -27,20 +28,26 @@ public class Programaciones extends javax.swing.JInternalFrame {
             
 
     /**
-     * Creates new form Programaciones
+     * Creates new form FrmProgramaciones
      */
     String idHorario,idOrde,dia,hora,lugar;
-    public Programaciones() {
+    public FrmProgramaciones() {
+//        mostrarHorarios mh
         initComponents();
+//        txtOrdenanza.setText(mh.getIdOrdenanza());
+//        txtDia.setText(mh.getfIni());
+//        txtLugar.setText(mh.getNomLab());
+//        txtHora.setText(mh.getfIni());
+
         txtOrdenanza.setText(idOrde);
         txtDia.setText(dia);
         txtLugar.setText(lugar);
         txtHora.setText(hora);
     }
 
-    Programaciones(frmMenuOrdenanzas aThis, boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+  
+
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -83,7 +90,7 @@ public class Programaciones extends javax.swing.JInternalFrame {
         jLabel1.setText("Programaciones");
 
         jPanel1.setBackground(new java.awt.Color(224, 182, 0));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalles ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalles ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 19), new java.awt.Color(255, 255, 255))); // NOI18N
 
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Ordenanza: ");
@@ -270,7 +277,7 @@ public class Programaciones extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(jLabel1)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -388,9 +395,9 @@ public class Programaciones extends javax.swing.JInternalFrame {
                     
                     JOptionPane.showMessageDialog(rootPane, "Programacion Finalizada");
                 } catch (JSONException ex) { 
-                Logger.getLogger(Programaciones.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(FrmProgramaciones.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
-                Logger.getLogger(Programaciones.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(FrmProgramaciones.class.getName()).log(Level.SEVERE, null, ex);
             } 
                   
         }
@@ -418,20 +425,21 @@ public class Programaciones extends javax.swing.JInternalFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Programaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmProgramaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Programaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmProgramaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Programaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmProgramaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Programaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmProgramaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Programaciones().setVisible(true);
+                new FrmProgramaciones().setVisible(true);
             }
         });
     }
@@ -458,4 +466,6 @@ public class Programaciones extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtLugar;
     private javax.swing.JTextField txtOrdenanza;
     // End of variables declaration//GEN-END:variables
+
+    
 }

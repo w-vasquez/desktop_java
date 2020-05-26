@@ -5,8 +5,11 @@
  */
 package Ordenanzas;
 
+import EncargadoDeLaboratorio.frmProgramaciones;
 import com.google.gson.Gson;
 import java.util.Vector;
+import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import tablas.mostrarHorarios;
 
@@ -15,83 +18,85 @@ import tablas.mostrarHorarios;
  * @author 50372
  */
 public class Historial extends javax.swing.JInternalFrame {
-   
 
     /**
      * Creates new form Historial
      */
-    int idUsuario = 0;
+    int idUsuario;
     DefaultTableModel contenedor;
+
     public Historial(int idUsuario) {
         initComponents();
         this.idUsuario = idUsuario;
-        
-        
-        contenedor=new DefaultTableModel();
+        System.out.println(idUsuario);
+
+        contenedor = new DefaultTableModel();
         contenedor.addColumn("ID Horario");
         contenedor.addColumn("Nom Horario");
-        contenedor.addColumn("Nom Usuario");
-        contenedor.addColumn("Apell Usuario");
-        contenedor.addColumn("ID Hordenanza");
-        contenedor.addColumn("Fech Creacion");
+        contenedor.addColumn("Nombre completo");
+        //contenedor.addColumn("Apell Usuario");
+        //contenedor.addColumn("ID Hordenanza");
+        //contenedor.addColumn("Fech Creacion");
         contenedor.addColumn("Fech Inicio");
         contenedor.addColumn("Fech FIN");
         contenedor.addColumn("Hora Inicio");
         contenedor.addColumn("Hora Fin");
         contenedor.addColumn("ID Lab");
         contenedor.addColumn("Nom Lab");
-        contenedor.addColumn("Lunes");
-        contenedor.addColumn("Martes");
-        contenedor.addColumn("Miercoles");
-        contenedor.addColumn("Jueves");
-        contenedor.addColumn("Viernes");
-        contenedor.addColumn("Sabado");
-        contenedor.addColumn("Domingo");
-        contenedor.addColumn("Notificacion");
-   
-        
+        //contenedor.addColumn("Lunes");
+        //contenedor.addColumn("Martes");
+        //contenedor.addColumn("Miercoles");
+        //contenedor.addColumn("Jueves");
+        //contenedor.addColumn("Viernes");
+        //contenedor.addColumn("Sabado");
+        //contenedor.addColumn("Domingo");
+        //contenedor.addColumn("Notificacion");
+
         lstUsuarios.setModel(contenedor);
         llenarTabla();
     }
-    
-    public void llenarTabla()
-    {
-        mostrarHorarios obj=new mostrarHorarios();
+
+    public void llenarTabla() {
+        mostrarHorarios obj = new mostrarHorarios();
         Vector fila;
-        Gson gson=new Gson();
+        Gson gson = new Gson();
 
-        String api="https://limpieza.azurewebsites.net/ws/API/vistaHorario/mostrarOrdenanzaLaboratorio.php?";
-        //String ordenanza="idOrdenanza="+idOrdenanza;
+        String api = "https://limpieza.azurewebsites.net/ws/API/vistaHorario/mostrarOrdenanza.php?";
+        String ordenanza = "idOrdenanza=" + idUsuario;
+        System.out.println(api + ordenanza);
+        String elJson = obj.consultaCrediencial(api + ordenanza);
 
-        String elJson=obj.consultaCrediencial(api);
-        
-        //convertimos a un obj de java
-        mostrarHorarios[] horarios=gson.fromJson(elJson, mostrarHorarios[].class);
-        
-        for(mostrarHorarios registros: horarios)
-        {
-            fila=new Vector();
-            fila.add(registros.getIdHorario());
-            fila.add(registros.getNomHorario());
-            fila.add(registros.getNomUsuario());
-            fila.add(registros.getApeUsuario());
-            fila.add(registros.getIdOrdenanza());
-            fila.add(registros.getfCrea());
-            fila.add(registros.getfIni());
-            fila.add(registros.getfFin());
-            fila.add(registros.gethIni());
-            fila.add(registros.gethFin());
-            fila.add(registros.getIdLaboratorio());
-            fila.add(registros.getNomLab());
-            fila.add(registros.getLunes());
-            fila.add(registros.getMartes());
-            fila.add(registros.getMiercoles());
-            fila.add(registros.getJueves());
-            fila.add(registros.getViernes());
-            fila.add(registros.getSabado());
-            fila.add(registros.getDomingo());
-            fila.add(registros.getNotificacion());
-            contenedor.addRow(fila);
+        try {
+            //convertimos a un obj de java
+            mostrarHorarios[] horarios = gson.fromJson(elJson, mostrarHorarios[].class);
+
+            for (mostrarHorarios registros : horarios) {
+                fila = new Vector();
+                fila.add(registros.getIdHorario());
+                fila.add(registros.getNomHorario());
+                fila.add(registros.getNomUsuario()+" "+registros.getApeUsuario());
+                //fila.add(registros.getApeUsuario());
+                //fila.add(registros.getIdOrdenanza());
+                //fila.add(registros.getfCrea());
+                fila.add(registros.getfIni());
+                fila.add(registros.getfFin());
+                fila.add(registros.gethIni());
+                fila.add(registros.gethFin());
+                fila.add(registros.getIdLaboratorio());
+                fila.add(registros.getNomLab());
+                //fila.add(registros.getLunes());
+                //fila.add(registros.getMartes());
+                //fila.add(registros.getMiercoles());
+                //fila.add(registros.getJueves());
+                //fila.add(registros.getViernes());
+                //fila.add(registros.getSabado());
+                //fila.add(registros.getDomingo());
+                //fila.add(registros.getNotificacion());
+                contenedor.addRow(fila);
+            }
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, "no hay horarios asigandos");
         }
     }
 
@@ -147,15 +152,15 @@ public class Historial extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 763, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -165,7 +170,7 @@ public class Historial extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(jLabel1)
-                .addContainerGap(720, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -176,30 +181,37 @@ public class Historial extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    
     private void lstUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstUsuariosMouseClicked
         // TODO add your handling code here:
-        int seleccionarDatos=lstUsuarios.rowAtPoint(evt.getPoint());
-        String idHorario=String.valueOf(lstUsuarios.getValueAt(seleccionarDatos, 0));
-        String idOrdenanza=String.valueOf(lstUsuarios.getValueAt(seleccionarDatos, 4));
-        String fechIni=String.valueOf(lstUsuarios.getValueAt(seleccionarDatos, 6));
-        String horaIni=String.valueOf(lstUsuarios.getValueAt(seleccionarDatos, 8));
-        String nomLab=String.valueOf(lstUsuarios.getValueAt(seleccionarDatos, 11));
+        int seleccionarDatos = lstUsuarios.rowAtPoint(evt.getPoint());
+        String idHorario = (String) lstUsuarios.getValueAt(seleccionarDatos, 0);
+        String nomHorario = (String) lstUsuarios.getValueAt(seleccionarDatos, 1);
+        String nomOrdenanza = (String) lstUsuarios.getValueAt(seleccionarDatos, 2);
+        //String idOrdenanza = String.valueOf(lstUsuarios.getValueAt(seleccionarDatos, 4));
+        String fechIni = String.valueOf(lstUsuarios.getValueAt(seleccionarDatos, 3));
+        String horaIni = String.valueOf(lstUsuarios.getValueAt(seleccionarDatos, 4));
+        String nomLab = String.valueOf(lstUsuarios.getValueAt(seleccionarDatos, 8));
+
+        mostrarHorarios objMostrarHorario = new mostrarHorarios();
+        objMostrarHorario.setIdHorario(idHorario);
+        objMostrarHorario.setNomHorario(nomHorario);
+        objMostrarHorario.setNomUsuario(nomOrdenanza);
+        objMostrarHorario.sethIni(horaIni);
+        objMostrarHorario.setfIni(fechIni);
+        objMostrarHorario.setIdOrdenanza(String.valueOf(idUsuario));
+        objMostrarHorario.setNomLab(nomLab);
         
-        Programaciones obj=new Programaciones();
-        obj.idHorario=idHorario;
-        obj.hora=horaIni;
-        obj.dia=fechIni;
-        obj.idOrde=idOrdenanza;
-        obj.lugar=nomLab;
- 
-        obj.setVisible(true);
+        
+        FrmCronemetro form = new FrmCronemetro(objMostrarHorario);        
+        form.setVisible(true);
     }//GEN-LAST:event_lstUsuariosMouseClicked
 
     /**
