@@ -56,7 +56,11 @@ public class FrmCronemetro extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, "No hay programaciones asignda");
         }
-
+        
+        txtNombreOrdenanza.setEditable(false);
+        txtHoraInicio.setEditable(false);
+        txtLugar.setEditable(false);
+        btnFinalizar.setEnabled(false);
     }
 
     private FrmCronemetro() {
@@ -296,6 +300,7 @@ public class FrmCronemetro extends javax.swing.JFrame {
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         // TODO add your handling code here:
         estado = true;
+        
         Thread hilo = new Thread() {
             public void run() {
                 for (;;) {
@@ -329,6 +334,8 @@ public class FrmCronemetro extends javax.swing.JFrame {
             }
         };
         hilo.start();
+        btnIniciar.setEnabled(false);
+        btnFinalizar.setEnabled(true);
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
@@ -346,12 +353,15 @@ public class FrmCronemetro extends javax.swing.JFrame {
         }else{
             estado = false;
         }
-
+        btnIniciar.setEnabled(true);
+        btnFinalizar.setEnabled(false);
     }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void btnPausarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPausarActionPerformed
         // TODO add your handling code here:
         estado = false;
+        btnIniciar.setEnabled(true);
+        btnFinalizar.setEnabled(false);
     }//GEN-LAST:event_btnPausarActionPerformed
 
     private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarActionPerformed
@@ -366,11 +376,11 @@ public class FrmCronemetro extends javax.swing.JFrame {
         comentario*/
         Prog pro = new Prog();
         String tiempoTranscurrido = hor + " : " + min + " : " + seg + " : " + miliseg;
-        String idProg = txtIDProgra.getText();
-        String C = "Pendiente";
-        String estadoC = "Pendiente";
-        String estadoL = "Finalizado";
-        String comenta = "pendiente";
+        //String idProg = txtIDProgra.getText();
+        //String C = "Pendiente";
+        //String estadoC = "Pendiente";
+        //String estadoL = "Finalizado";
+        //String comenta = "pendiente";
         String api = "http://limpieza.azurewebsites.net/WS/API/programacion/actualizarTiempoTranscurrido.php";
         
        objProgramaciones = new Programaciones();
@@ -378,7 +388,8 @@ public class FrmCronemetro extends javax.swing.JFrame {
        objProgramaciones.setTiempoTranscurrido(tiempoTranscurrido);
         try {
             objProgramaciones.actualizarTiempoTranscurrido(objProgramaciones, api);
-            
+            JOptionPane.showMessageDialog(rootPane, "Ordenanza: "+txtNombreOrdenanza.getText()+"\nFinalizo la programacion en : "+txtLugar.getText()+"\nConun tiempo de: "+tiempoTranscurrido);
+            this.dispose();
 //        if(!idProg.equals("")&&!tiempoTranscurrido.equals(""))
 //        {
 //            try
