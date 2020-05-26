@@ -38,7 +38,6 @@ public class frmMenuEncargado extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         btncrearprogramacion = new rsbuttom.RSButtonMetro();
         btncerrrarsesion = new rsbuttom.RSButtonMetro();
@@ -64,10 +63,7 @@ public class frmMenuEncargado extends javax.swing.JFrame {
         jLabel3.setText("Encargado de laboratorio");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 10, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/home.png"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1810, 10, 60, -1));
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1900, 70));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1720, 70));
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -77,6 +73,7 @@ public class frmMenuEncargado extends javax.swing.JFrame {
         btncrearprogramacion.setColorHover(new java.awt.Color(173, 16, 60));
         btncrearprogramacion.setColorNormal(new java.awt.Color(38, 38, 38));
         btncrearprogramacion.setColorPressed(new java.awt.Color(121, 11, 42));
+        btncrearprogramacion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btncrearprogramacion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btncrearprogramacion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btncrearprogramacion.addActionListener(new java.awt.event.ActionListener() {
@@ -84,26 +81,28 @@ public class frmMenuEncargado extends javax.swing.JFrame {
                 btncrearprogramacionActionPerformed(evt);
             }
         });
-        jPanel3.add(btncrearprogramacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 250, 110));
+        jPanel3.add(btncrearprogramacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 210, 110));
 
         btncerrrarsesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar2.png"))); // NOI18N
         btncerrrarsesion.setText("CERRAR SESIÓN");
         btncerrrarsesion.setColorHover(new java.awt.Color(215, 79, 42));
         btncerrrarsesion.setColorNormal(new java.awt.Color(38, 38, 38));
         btncerrrarsesion.setColorPressed(new java.awt.Color(150, 55, 29));
+        btncerrrarsesion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btncerrrarsesion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btncerrrarsesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btncerrrarsesionActionPerformed(evt);
             }
         });
-        jPanel3.add(btncerrrarsesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 580, 250, 170));
+        jPanel3.add(btncerrrarsesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 580, 210, 170));
 
         btncrearnotificaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/noti.png"))); // NOI18N
         btncrearnotificaciones.setText("CREAR NOTIFICACIONES");
         btncrearnotificaciones.setColorHover(new java.awt.Color(156, 127, 0));
         btncrearnotificaciones.setColorNormal(new java.awt.Color(38, 38, 38));
         btncrearnotificaciones.setColorPressed(new java.awt.Color(224, 182, 0));
+        btncrearnotificaciones.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btncrearnotificaciones.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btncrearnotificaciones.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btncrearnotificaciones.addActionListener(new java.awt.event.ActionListener() {
@@ -111,26 +110,28 @@ public class frmMenuEncargado extends javax.swing.JFrame {
                 btncrearnotificacionesActionPerformed(evt);
             }
         });
-        jPanel3.add(btncrearnotificaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 250, 120));
+        jPanel3.add(btncrearnotificaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 210, 120));
 
         btnprogramaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Programaciones2.png"))); // NOI18N
         btnprogramaciones.setText("PROGRAMACIONES");
         btnprogramaciones.setColorHover(new java.awt.Color(5, 134, 154));
         btnprogramaciones.setColorNormal(new java.awt.Color(38, 38, 38));
         btnprogramaciones.setColorPressed(new java.awt.Color(3, 94, 107));
+        btnprogramaciones.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnprogramaciones.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnprogramaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnprogramacionesActionPerformed(evt);
             }
         });
-        jPanel3.add(btnprogramaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 250, 120));
+        jPanel3.add(btnprogramaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 210, 120));
 
         btncalificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/calificar2.png"))); // NOI18N
         btncalificar.setText("CALIFICAR");
         btncalificar.setColorHover(new java.awt.Color(24, 152, 0));
         btncalificar.setColorNormal(new java.awt.Color(38, 38, 38));
         btncalificar.setColorPressed(new java.awt.Color(17, 106, 0));
+        btncalificar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btncalificar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btncalificar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btncalificar.addActionListener(new java.awt.event.ActionListener() {
@@ -138,13 +139,14 @@ public class frmMenuEncargado extends javax.swing.JFrame {
                 btncalificarActionPerformed(evt);
             }
         });
-        jPanel3.add(btncalificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 250, 120));
+        jPanel3.add(btncalificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 210, 120));
 
         btncrearhorario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/horarios.png"))); // NOI18N
         btncrearhorario.setText("CREAR HORARIOS");
         btncrearhorario.setColorHover(new java.awt.Color(156, 127, 0));
         btncrearhorario.setColorNormal(new java.awt.Color(38, 38, 38));
         btncrearhorario.setColorPressed(new java.awt.Color(224, 182, 0));
+        btncrearhorario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btncrearhorario.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btncrearhorario.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btncrearhorario.addActionListener(new java.awt.event.ActionListener() {
@@ -152,9 +154,9 @@ public class frmMenuEncargado extends javax.swing.JFrame {
                 btncrearhorarioActionPerformed(evt);
             }
         });
-        jPanel3.add(btncrearhorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 250, 100));
+        jPanel3.add(btncrearhorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 210, 100));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 250, 750));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 210, 750));
 
         escritorio.setBackground(new java.awt.Color(204, 255, 255));
 
@@ -162,14 +164,14 @@ public class frmMenuEncargado extends javax.swing.JFrame {
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1650, Short.MAX_VALUE)
+            .addGap(0, 1510, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 740, Short.MAX_VALUE)
         );
 
-        jPanel1.add(escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 1650, 740));
+        jPanel1.add(escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 1510, 740));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -279,9 +281,8 @@ public class frmMenuEncargado extends javax.swing.JFrame {
     private rsbuttom.RSButtonMetro btncrearnotificaciones;
     private rsbuttom.RSButtonMetro btncrearprogramacion;
     private rsbuttom.RSButtonMetro btnprogramaciones;
-    private javax.swing.JDesktopPane escritorio;
+    public static javax.swing.JDesktopPane escritorio;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

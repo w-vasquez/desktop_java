@@ -32,7 +32,6 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        btnmenu = new rsbuttom.RSButtonMetro();
         jLabel4 = new javax.swing.JLabel();
         pnldespegable = new javax.swing.JPanel();
         escritorio = new javax.swing.JDesktopPane();
@@ -41,6 +40,7 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
         btnHistorial = new rsbuttom.RSButtonMetro();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         btnNuevoLab = new rsbuttom.RSButtonMetro();
         btnModificarEdificio = new rsbuttom.RSButtonMetro();
         jPanel5 = new javax.swing.JPanel();
@@ -61,22 +61,6 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(153, 0, 51));
 
-        btnmenu.setBackground(new java.awt.Color(153, 0, 51));
-        btnmenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AdministradorGeneral/home.png"))); // NOI18N
-        btnmenu.setColorHover(new java.awt.Color(153, 0, 51));
-        btnmenu.setColorNormal(new java.awt.Color(153, 0, 51));
-        btnmenu.setColorPressed(new java.awt.Color(153, 0, 51));
-        btnmenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnmenuMousePressed(evt);
-            }
-        });
-        btnmenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnmenuActionPerformed(evt);
-            }
-        });
-
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AdministradorGeneral/utec.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -84,17 +68,19 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(btnmenu, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1453, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(1276, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnmenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(7, 7, 7))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1660, 70));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1390, 70));
 
         pnldespegable.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(pnldespegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, -1, 630));
@@ -105,14 +91,14 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1410, Short.MAX_VALUE)
+            .addGap(0, 1150, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 660, Short.MAX_VALUE)
         );
 
-        jPanel1.add(escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, 1410, 660));
+        jPanel1.add(escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, 1150, 660));
 
         btnNuevoEdificio.setBackground(new java.awt.Color(38, 38, 38));
         btnNuevoEdificio.setText("NUEVO");
@@ -153,24 +139,32 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("GESTIONAR USUARIOS");
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("GESTIONAR USUARIOS");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(46, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel1))
                 .addGap(38, 38, 38))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jLabel6)
+                .addGap(40, 40, 40)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, -1, 40));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 240, 40));
 
         btnNuevoLab.setBackground(new java.awt.Color(38, 38, 38));
         btnNuevoLab.setText("NUEVO");
@@ -205,9 +199,9 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(22, 22, 22)
                 .addComponent(jLabel2)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -305,7 +299,7 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
                 btnCerrarSesionActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 630, 240, 70));
+        jPanel1.add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 630, 240, 100));
 
         btnasignarOrd.setBackground(new java.awt.Color(38, 38, 38));
         btnasignarOrd.setText("ASIGNAR ORDENANZAS");
@@ -322,7 +316,7 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -331,27 +325,6 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmenuActionPerformed
-        // TODO add your handling code here:
-       
-
-        /*int posicion= this.pnldespegable.getX();
-        if (posicion > -1)
-        {
-            Animacion.Animacion.mover_izquierda(0, -250, 2, 2, pnldespegable);
-        }
-        else
-        {
-            Animacion.Animacion.mover_derecha(-250,0, 2, 2, pnldespegable);
-        }*/
-
-    }//GEN-LAST:event_btnmenuActionPerformed
-
-    private void btnmenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnmenuMousePressed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_btnmenuMousePressed
 
     private void btnnuevoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnnuevoMousePressed
         // TODO add your handling code here:
@@ -482,7 +455,6 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
     private rsbuttom.RSButtonMetro btnNuevoEdificio;
     private rsbuttom.RSButtonMetro btnNuevoLab;
     private rsbuttom.RSButtonMetro btnasignarOrd;
-    private rsbuttom.RSButtonMetro btnmenu;
     private rsbuttom.RSButtonMetro btnmodificar;
     private rsbuttom.RSButtonMetro btnnuevo;
     private javax.swing.JDesktopPane escritorio;
@@ -491,6 +463,7 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
