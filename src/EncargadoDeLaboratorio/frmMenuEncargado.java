@@ -32,7 +32,6 @@ public class frmMenuEncargado extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         btncrearprogramacion = new rsbuttom.RSButtonMetro();
         btncerrrarsesion = new rsbuttom.RSButtonMetro();
@@ -57,9 +56,6 @@ public class frmMenuEncargado extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Encargado de laboratorio");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 10, -1, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/home.png"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1810, 10, 60, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1900, 70));
 
@@ -273,9 +269,8 @@ public class frmMenuEncargado extends javax.swing.JFrame {
     private rsbuttom.RSButtonMetro btncrearnotificaciones;
     private rsbuttom.RSButtonMetro btncrearprogramacion;
     private rsbuttom.RSButtonMetro btnprogramaciones;
-    private javax.swing.JDesktopPane escritorio;
+    public static javax.swing.JDesktopPane escritorio;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

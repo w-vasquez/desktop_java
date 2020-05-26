@@ -18,6 +18,7 @@ public class frmMenuOrdenanzas extends javax.swing.JFrame {
      */
     public frmMenuOrdenanzas() {
         initComponents();
+        
         this.setLocationRelativeTo(this);
     }
 
@@ -30,100 +31,123 @@ public class frmMenuOrdenanzas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        fondo = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        btnhistorial = new rsbuttom.RSButtonMetro();
+        btncerrar = new rsbuttom.RSButtonMetro();
+        btnprogramaciones = new rsbuttom.RSButtonMetro();
         escritorio = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        fondo.setBackground(new java.awt.Color(255, 255, 255));
+        fondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(121, 11, 42));
+        jPanel1.setBackground(new java.awt.Color(121, 11, 42));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/home3.png"))); // NOI18N
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/unnamed2.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1218, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addContainerGap())
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1240, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(0, 11, Short.MAX_VALUE))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1350, 70));
+        fondo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 60));
 
-        jPanel3.setBackground(new java.awt.Color(38, 38, 38));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 220, 690));
+        jPanel2.setBackground(new java.awt.Color(38, 38, 38));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnhistorial.setText("HISTORIAL");
+        btnhistorial.setColorHover(new java.awt.Color(156, 127, 0));
+        btnhistorial.setColorNormal(new java.awt.Color(38, 38, 38));
+        btnhistorial.setColorPressed(new java.awt.Color(224, 182, 0));
+        btnhistorial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnhistorialActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnhistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 140));
+
+        btncerrar.setText("CERRAR SESIÓN");
+        btncerrar.setColorHover(new java.awt.Color(173, 16, 60));
+        btncerrar.setColorNormal(new java.awt.Color(38, 38, 38));
+        btncerrar.setColorPressed(new java.awt.Color(121, 11, 42));
+        btncerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncerrarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btncerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 170, 140));
+
+        btnprogramaciones.setText("PROGRAMACIONES");
+        btnprogramaciones.setColorHover(new java.awt.Color(24, 152, 0));
+        btnprogramaciones.setColorNormal(new java.awt.Color(38, 38, 38));
+        btnprogramaciones.setColorPressed(new java.awt.Color(17, 106, 0));
+        btnprogramaciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnprogramacionesActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnprogramaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 170, 110));
+
+        fondo.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 170, 710));
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1130, Short.MAX_VALUE)
+            .addGap(0, 1070, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 690, Short.MAX_VALUE)
+            .addGap(0, 710, Short.MAX_VALUE)
         );
 
-        jPanel1.add(escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 1130, 690));
+        fondo.add(escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 1070, 710));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 758, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnprogramacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnprogramacionesActionPerformed
+    private void btncerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncerrarActionPerformed
         // TODO add your handling code here:
-          Programaciones form=new Programaciones();
-        escritorio.add(form);
-        form.toFront();
+        this.dispose();
+        
+        frLogin form=new frLogin();
         form.setVisible(true);
-      
-    }//GEN-LAST:event_btnprogramacionesActionPerformed
+        
+    }//GEN-LAST:event_btncerrarActionPerformed
 
     private void btnhistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhistorialActionPerformed
         // TODO add your handling code here:
-          Historial form=new Historial();
+       Historial  form=new Historial();
+       escritorio.add(form);
+       form.toFront();
+       form.setVisible(true);
+    }//GEN-LAST:event_btnhistorialActionPerformed
+
+    private void btnprogramacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnprogramacionesActionPerformed
+        // TODO add your handling code here:
+        Programaciones form=new Programaciones();
         escritorio.add(form);
         form.toFront();
         form.setVisible(true);
-    }//GEN-LAST:event_btnhistorialActionPerformed
-
-    private void btncerrrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncerrrarActionPerformed
-        // TODO add your handling code here:
-        frLogin form=new frLogin();
-        form.toFront();
-        form.setVisible(true);
-       this.dispose();
-    }//GEN-LAST:event_btncerrrarActionPerformed
+    }//GEN-LAST:event_btnprogramacionesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,11 +185,12 @@ public class frmMenuOrdenanzas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane escritorio;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private rsbuttom.RSButtonMetro btncerrar;
+    private rsbuttom.RSButtonMetro btnhistorial;
+    private rsbuttom.RSButtonMetro btnprogramaciones;
+    public static javax.swing.JDesktopPane escritorio;
+    private javax.swing.JPanel fondo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }

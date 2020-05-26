@@ -5,8 +5,13 @@
  */
 package AdministradorGeneral;
 
+import static EncargadoDeLaboratorio.frmCrearNotificacion.lstregistros;
 import com.google.gson.Gson;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -103,7 +108,7 @@ public class frmModificar_Usuario extends javax.swing.JInternalFrame {
         jLabel16 = new javax.swing.JLabel();
         txtapellido = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        txtfechanac = new javax.swing.JTextField();
+        dbfechanac = new com.toedter.calendar.JDateChooser();
         jPanel4 = new javax.swing.JPanel();
         lblregistros = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -119,7 +124,7 @@ public class frmModificar_Usuario extends javax.swing.JInternalFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel1.setBackground(new java.awt.Color(224, 182, 0));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Modificar Usuarios", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Modificar Usuarios", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
 
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Nombre: ");
@@ -203,12 +208,6 @@ public class frmModificar_Usuario extends javax.swing.JInternalFrame {
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Fecha de nacimiento");
 
-        txtfechanac.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfechanacActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -216,6 +215,15 @@ public class frmModificar_Usuario extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel15))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbotipo, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtcontraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel8)
                         .addComponent(jLabel16)
@@ -225,33 +233,26 @@ public class frmModificar_Usuario extends javax.swing.JInternalFrame {
                             .addComponent(jLabel14))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel13)
-                            .addGap(1, 1, 1)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel15))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtcontraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbotipo, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(215, 215, 215))
+                            .addGap(1, 1, 1))))
+                .addGap(259, 259, 259))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(149, 149, 149)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtidusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtfechanac, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cboestado, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtnombre, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtapellido, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtcorreo, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(dbfechanac, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txttelefono, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cboestado, javax.swing.GroupLayout.Alignment.LEADING, 0, 185, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(86, 86, 86)
                         .addComponent(btnguardar)
-                        .addGap(152, 152, 152)
+                        .addGap(71, 71, 71)
                         .addComponent(btncancelar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -268,11 +269,11 @@ public class frmModificar_Usuario extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(txtapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel17)
-                    .addComponent(txtfechanac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                    .addComponent(dbfechanac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(txtcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -296,7 +297,7 @@ public class frmModificar_Usuario extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnguardar)
                     .addComponent(btncancelar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -354,7 +355,7 @@ public class frmModificar_Usuario extends javax.swing.JInternalFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 576, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -367,14 +368,14 @@ public class frmModificar_Usuario extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(37, 37, 37))
         );
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 590));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 590));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -417,7 +418,12 @@ public class frmModificar_Usuario extends javax.swing.JInternalFrame {
         String idTipo=cbotipo.getSelectedItem().toString();
         String nombre=txtnombre.getText();
         String apellido=txtapellido.getText();
-        String fech=txtfechanac.getText();
+        int a, m, d;
+        a = dbfechanac.getCalendar().get(Calendar.YEAR);
+        d = dbfechanac.getCalendar().get(Calendar.DAY_OF_MONTH);
+        m = dbfechanac.getCalendar().get(Calendar.MONTH)+1;
+        String fechnac = a + "-" + m + "-" + d;
+       
         String correo=txtcorreo.getText();
         String telefono=txttelefono.getText();
         String contra=txtcontraseña.getText();
@@ -436,16 +442,16 @@ public class frmModificar_Usuario extends javax.swing.JInternalFrame {
         }
         
         String api="https://limpieza.azurewebsites.net/WS/API/Usuario/actualizar.php";
-        if(!id.equals("") && !nombre.equals("")&& !apellido.equals("")&& !fech.equals("")&& !correo.equals("")&& !telefono.equals("")&& !contra.equals(""))
+        if(!id.equals("") && !nombre.equals("")&& !apellido.equals("")&& !fechnac.equals("")&& !correo.equals("")&& !telefono.equals("")&& !contra.equals(""))
         {
             try
             {
-                obj.InsertarDatos(api, id, tipoUsuario, nombre, apellido, fech, correo, estado, telefono, contra);
+                obj.InsertarDatos(api, id, tipoUsuario, nombre, apellido, fechnac, correo, estado, telefono, contra);
                 
                     txtidusuario.setText("");
                     txtnombre.setText("");
                     txtapellido.setText("");
-                    txtfechanac.setText("");
+                   
                     txtcorreo.setText("");
                     txttelefono.setText("");
                     txtcontraseña.setText("");
@@ -475,19 +481,26 @@ public class frmModificar_Usuario extends javax.swing.JInternalFrame {
         txtapellido.transferFocus();
     }//GEN-LAST:event_txtapellidoActionPerformed
 
-    private void txtfechanacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfechanacActionPerformed
-        // TODO add your handling code here:
-        txtfechanac.transferFocus();
-    }//GEN-LAST:event_txtfechanacActionPerformed
-
     private void tablausuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablausuariosMouseClicked
         // TODO add your handling code here:
         int seleccionarDatos=tablausuarios.rowAtPoint(evt.getPoint());
+       
+            
+        try {
+            Date date = new SimpleDateFormat("yyyy-MM-dd").parse((String) tablausuarios.getValueAt(seleccionarDatos, 4).toString());
+            
+            dbfechanac.setDate(date);
+        } catch (ParseException ex) {
+            Logger.getLogger(frmModificar_Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+            
+        
         txtidusuario.setText(String.valueOf(tablausuarios.getValueAt(seleccionarDatos, 0)));
         cbotipo.setSelectedItem(String.valueOf(tablausuarios.getValueAt(seleccionarDatos, 1)));
         txtnombre.setText(String.valueOf(tablausuarios.getValueAt(seleccionarDatos, 2)));
         txtapellido.setText(String.valueOf(tablausuarios.getValueAt(seleccionarDatos, 3)));
-        txtfechanac.setText(String.valueOf(tablausuarios.getValueAt(seleccionarDatos, 4)));
+        //txtfechanac.setText(String.valueOf(tablausuarios.getValueAt(seleccionarDatos, 4)));
         txtcorreo.setText(String.valueOf(tablausuarios.getValueAt(seleccionarDatos, 5)));
         cboestado.setSelectedItem(String.valueOf(tablausuarios.getValueAt(seleccionarDatos, 6)));
         txttelefono.setText(String.valueOf(tablausuarios.getValueAt(seleccionarDatos, 7)));
@@ -537,6 +550,7 @@ public class frmModificar_Usuario extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnguardar;
     private javax.swing.JComboBox<String> cboestado;
     private javax.swing.JComboBox<String> cbotipo;
+    private com.toedter.calendar.JDateChooser dbfechanac;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -555,7 +569,6 @@ public class frmModificar_Usuario extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtapellido;
     private javax.swing.JTextField txtcontraseña;
     private javax.swing.JTextField txtcorreo;
-    private javax.swing.JTextField txtfechanac;
     private javax.swing.JTextField txtidusuario;
     private javax.swing.JTextField txtnombre;
     private javax.swing.JTextField txttelefono;

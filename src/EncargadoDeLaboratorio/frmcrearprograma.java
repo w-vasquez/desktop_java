@@ -11,6 +11,7 @@ import java.sql.Statement;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import tablas.Calificar;
 import tablas.Programaciones;
 import tablas.Usuario;
 
@@ -390,6 +391,9 @@ public class frmcrearprograma extends javax.swing.JInternalFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 listaprogramcionesMouseClicked(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                listaprogramcionesMousePressed(evt);
+            }
         });
         jScrollPane2.setViewportView(listaprogramciones);
 
@@ -493,7 +497,7 @@ public class frmcrearprograma extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 1306, Short.MAX_VALUE)
+            .addComponent(fondo, javax.swing.GroupLayout.PREFERRED_SIZE, 1306, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -539,7 +543,10 @@ public class frmcrearprograma extends javax.swing.JInternalFrame {
         txtestadolimpieza.setText(listaprogramciones.getValueAt(fila, 4).toString());
         txtestadocalificacion.setText(listaprogramciones.getValueAt(fila, 5).toString());
         txtcomentarios.setText(listaprogramciones.getValueAt(fila, 6).toString());
-
+        
+       
+        
+        
     }//GEN-LAST:event_listaprogramcionesMouseClicked
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -745,6 +752,12 @@ public class frmcrearprograma extends javax.swing.JInternalFrame {
         form.toFront();
         form.setVisible(true);
     }//GEN-LAST:event_btnvistahorarioActionPerformed
+
+    private void listaprogramcionesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaprogramcionesMousePressed
+        // TODO add your handling code here:
+         
+
+    }//GEN-LAST:event_listaprogramcionesMousePressed
 
     /**
      * @param args the command line arguments
