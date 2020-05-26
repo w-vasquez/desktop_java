@@ -68,7 +68,51 @@ public class frmCrearhorarios extends javax.swing.JInternalFrame {
         return integer;
 
     }
+void ocultarcolumnas()
+{
+        lstregistros.getColumnModel().getColumn(0).setMaxWidth(0);
+        lstregistros.getColumnModel().getColumn(0).setMinWidth(0);
+        lstregistros.getColumnModel().getColumn(0).setPreferredWidth(0);
+        
+          lstregistros.getColumnModel().getColumn(3).setMaxWidth(0);
+        lstregistros.getColumnModel().getColumn(3).setMinWidth(0);
+        lstregistros.getColumnModel().getColumn(3).setPreferredWidth(0);
+        
+          lstregistros.getColumnModel().getColumn(9).setMaxWidth(0);
+        lstregistros.getColumnModel().getColumn(9).setMinWidth(0);
+        lstregistros.getColumnModel().getColumn(9).setPreferredWidth(0);
+        
+         lstregistros.getColumnModel().getColumn(11).setMaxWidth(0);
+        lstregistros.getColumnModel().getColumn(11).setMinWidth(0);
+        lstregistros.getColumnModel().getColumn(11).setPreferredWidth(0);
+        
+         lstregistros.getColumnModel().getColumn(12).setMaxWidth(0);
+        lstregistros.getColumnModel().getColumn(12).setMinWidth(0);
+        lstregistros.getColumnModel().getColumn(12).setPreferredWidth(0);
+        
+         lstregistros.getColumnModel().getColumn(13).setMaxWidth(0);
+        lstregistros.getColumnModel().getColumn(13).setMinWidth(0);
+        lstregistros.getColumnModel().getColumn(13).setPreferredWidth(0);
+        
+         lstregistros.getColumnModel().getColumn(14).setMaxWidth(0);
+        lstregistros.getColumnModel().getColumn(14).setMinWidth(0);
+        lstregistros.getColumnModel().getColumn(14).setPreferredWidth(0);
+        
+         lstregistros.getColumnModel().getColumn(15).setMaxWidth(0);
+        lstregistros.getColumnModel().getColumn(15).setMinWidth(0);
+        lstregistros.getColumnModel().getColumn(15).setPreferredWidth(0);
+        
+         lstregistros.getColumnModel().getColumn(16).setMaxWidth(0);
+        lstregistros.getColumnModel().getColumn(16).setMinWidth(0);
+        lstregistros.getColumnModel().getColumn(16).setPreferredWidth(0);
+        
+         lstregistros.getColumnModel().getColumn(17).setMaxWidth(0);
+        lstregistros.getColumnModel().getColumn(17).setMinWidth(0);
+        lstregistros.getColumnModel().getColumn(17).setPreferredWidth(0);
 
+
+
+}
     void limpiarcampos() {
         txtidhorario.setText("");
         txtnombrehorario.setText("");
@@ -93,7 +137,7 @@ public class frmCrearhorarios extends javax.swing.JInternalFrame {
     void mostrar(String buscar) {
         // TODO add your handling code here:
         //Instanciar clase de la tabla
-
+        
         Gson gson = new Gson();
 
         totalregistros = 0;
@@ -171,6 +215,7 @@ public class frmCrearhorarios extends javax.swing.JInternalFrame {
             modelo.addRow(fila);
         }
         lblregistros.setText("Total registros: " + Integer.toString(totalregistros));
+        ocultarcolumnas();
     }
 
     /**
@@ -545,7 +590,7 @@ public class frmCrearhorarios extends javax.swing.JInternalFrame {
                     .addComponent(btnnuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btncancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -555,23 +600,14 @@ public class frmCrearhorarios extends javax.swing.JInternalFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista de horarios"));
 
-        lstregistros.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        lstregistros.setColumnSelectionAllowed(true);
         lstregistros.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lstregistrosMouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(lstregistros);
+        lstregistros.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
         jLabel13.setText("Horarios:");
 
@@ -607,22 +643,22 @@ public class frmCrearhorarios extends javax.swing.JInternalFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtidhorariobuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnsalir)
-                        .addGap(18, 18, 18)
-                        .addComponent(btneliminar))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(lblregistros)
-                        .addGap(24, 24, 24)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addComponent(jLabel13)
+                .addGap(18, 18, 18)
+                .addComponent(txtidhorariobuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnsalir)
+                .addGap(18, 18, 18)
+                .addComponent(btneliminar)
+                .addGap(54, 54, 54)
+                .addComponent(lblregistros)
+                .addContainerGap(175, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -633,11 +669,10 @@ public class frmCrearhorarios extends javax.swing.JInternalFrame {
                     .addComponent(txtidhorariobuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar)
                     .addComponent(btnsalir)
-                    .addComponent(btneliminar))
-                .addGap(4, 4, 4)
-                .addComponent(lblregistros)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(btneliminar)
+                    .addComponent(lblregistros))
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -653,12 +688,12 @@ public class frmCrearhorarios extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
+                .addContainerGap(26, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
