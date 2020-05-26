@@ -101,7 +101,7 @@ public class frmMenuOrdenanzas extends javax.swing.JFrame {
 
         btnhistorial.setBackground(new java.awt.Color(38, 38, 38));
         btnhistorial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Historial.png"))); // NOI18N
-        btnhistorial.setText("HISTORIAL");
+        btnhistorial.setText("HORARIOS");
         btnhistorial.setColorHover(new java.awt.Color(5, 134, 154));
         btnhistorial.setColorNormal(new java.awt.Color(38, 38, 38));
         btnhistorial.setColorPressed(new java.awt.Color(3, 94, 107));

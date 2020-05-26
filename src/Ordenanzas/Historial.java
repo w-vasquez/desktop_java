@@ -43,13 +43,13 @@ public class Historial extends javax.swing.JInternalFrame {
         contenedor.addColumn("Hora Fin");
         contenedor.addColumn("ID Lab");
         contenedor.addColumn("Nom Lab");
-        //contenedor.addColumn("Lunes");
-        //contenedor.addColumn("Martes");
-        //contenedor.addColumn("Miercoles");
-        //contenedor.addColumn("Jueves");
-        //contenedor.addColumn("Viernes");
-        //contenedor.addColumn("Sabado");
-        //contenedor.addColumn("Domingo");
+        contenedor.addColumn("Lunes");
+        contenedor.addColumn("Martes");
+        contenedor.addColumn("Miercoles");
+        contenedor.addColumn("Jueves");
+        contenedor.addColumn("Viernes");
+        contenedor.addColumn("Sabado");
+        contenedor.addColumn("Domingo");
         //contenedor.addColumn("Notificacion");
 
         lstUsuarios.setModel(contenedor);
@@ -84,13 +84,13 @@ public class Historial extends javax.swing.JInternalFrame {
                 fila.add(registros.gethFin());
                 fila.add(registros.getIdLaboratorio());
                 fila.add(registros.getNomLab());
-                //fila.add(registros.getLunes());
-                //fila.add(registros.getMartes());
-                //fila.add(registros.getMiercoles());
-                //fila.add(registros.getJueves());
-                //fila.add(registros.getViernes());
-                //fila.add(registros.getSabado());
-                //fila.add(registros.getDomingo());
+                fila.add(registros.getLunes());
+                fila.add(registros.getMartes());
+                fila.add(registros.getMiercoles());
+                fila.add(registros.getJueves());
+                fila.add(registros.getViernes());
+                fila.add(registros.getSabado());
+                fila.add(registros.getDomingo());
                 //fila.add(registros.getNotificacion());
                 contenedor.addRow(fila);
             }
@@ -123,10 +123,10 @@ public class Historial extends javax.swing.JInternalFrame {
         setMaximizable(true);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Historial");
+        jLabel1.setText("Horarios");
 
         jPanel1.setBackground(new java.awt.Color(5, 134, 154));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Horarios Programados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 19), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Horarios Programados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
 
         lstUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
