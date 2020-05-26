@@ -452,6 +452,11 @@ void ocultarcolumnas()
         });
 
         btnvistalaboratorio.setText("...");
+        btnvistalaboratorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnvistalaboratorioActionPerformed(evt);
+            }
+        });
 
         try {
             txthorainicio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
@@ -1131,6 +1136,14 @@ void ocultarcolumnas()
 
     }//GEN-LAST:event_btnvistanotificacionActionPerformed
 
+    private void btnvistalaboratorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvistalaboratorioActionPerformed
+        // TODO add your handling code here:
+        
+        frmVistaLaboratorios form=new frmVistaLaboratorios();
+        form.toFront();
+        form.setVisible(true);
+    }//GEN-LAST:event_btnvistalaboratorioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1210,9 +1223,9 @@ void ocultarcolumnas()
     private javax.swing.JTextField txtidhorario;
     private javax.swing.JTextField txtidhorariobuscar;
     public static javax.swing.JTextField txtidordenanza;
-    private javax.swing.JTextField txtlaboratorio;
+    public static javax.swing.JTextField txtlaboratorio;
     private javax.swing.JTextField txtnombrehorario;
-    private javax.swing.JTextField txtnombrelabo;
+    public static javax.swing.JTextField txtnombrelabo;
     public static javax.swing.JTextField txtnombreordenanza;
     public static javax.swing.JTextField txtnotificacion;
     // End of variables declaration//GEN-END:variables
