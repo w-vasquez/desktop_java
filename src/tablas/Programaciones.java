@@ -242,6 +242,7 @@ public class Programaciones
 
         objeto.put("idProgramacion", objProgramacion.getIdProgramacion());
         objeto.put("tiempoTranscurrido", objProgramacion.getTiempoTranscurrido());
+        objeto.put("estadoLimpieza", "Concluido");
 
         
         rest.sentenciaAccion(api, objeto);
